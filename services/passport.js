@@ -2,6 +2,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const mongoose = require('mongoose');
+const keys = require('../config/keys')
 
 const User = mongoose.model('users');
 
@@ -18,9 +19,8 @@ passport.deserializeUser((id, done) => {
 passport.use(
 	new GoogleStrategy(
 		{
-			clientID:
-				'648058795167-ptbd30mihueac5ds5292ddtmcaf7oldq.apps.googleusercontent.com',
-			clientSecret: 'PGXaMSfEcfaEonfXsPNxQB9w',
+			clientID:keys.googleClientID,
+			clientSecret:keys.googleClientSecret,
 			callbackURL: '/auth/google/callback',
 			proxy: true,
 		},
@@ -43,8 +43,8 @@ passport.use(
 passport.use(
 	new FacebookStrategy(
 		{
-			clientID: '231996444765920',
-			clientSecret: 'cc423b53e306d1d739de8becd85243c5',
+			clientID: keys.facebookAppID,
+			clientSecret: keys.facebookClientSecret,
 			callbackURL: '/auth/facebook/callback',
 		},
 		async (accessToken, refreshToken, profile, done) => {

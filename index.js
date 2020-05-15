@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+const keys = require('./config/keys');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const authRoutes = require('./routes/authRoutes');
@@ -8,9 +9,7 @@ const mongoose = require('mongoose');
 require('./models/userModel');
 require('./services/passport');
 
-mongoose.connect(
-	'mongodb+srv://samer:eVaLsaIBIerGgOoM@cluster0-hdaqh.mongodb.net/test?retryWrites=true&w=majority'
-);
+mongoose.connect(keys.mongoURI);
 
 app.use(bodyParser.json());
 app.use(
