@@ -4,6 +4,7 @@ const keys = require('./config/keys');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const authRoutes = require('./routes/authRoutes');
+const passwordRoutes = require('./routes/passwordRoutes');
 const cookieSession = require('cookie-session');
 const mongoose = require('mongoose');
 require('./models/userModel');
@@ -24,8 +25,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 authRoutes(app);
+passwordRoutes(app);
 
-app.get('/', (req, res) => {
+app.get('/hey', (req, res) => {
 	res.send('arrombado');
 });
 

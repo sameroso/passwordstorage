@@ -39,6 +39,7 @@ const app = (app) => {
 		req.logout();
 		res.redirect('/');
 	  });
+	  
 };
 
 module.exports = app;
