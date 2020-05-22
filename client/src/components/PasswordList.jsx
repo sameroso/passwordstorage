@@ -1,24 +1,38 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import SinglePasswordCard from './SinglePasswordCard';
+
 function PasswordList({ passwordList }) {
 	const renderList = () => {
 		return passwordList.map((el) => {
 			return (
-				<div style={{border:"red solid 1px"}} key={`${el.domain}+${el.userName}`}>
-					<div>{el.domain}</div>
-					<div>{el.userName}</div>
-					<div>{el.password}</div>
+				<div className="col-md-6" key={`${el.domain}${el.userName}`}>
+					<SinglePasswordCard
+						domain={el.domain}
+						userName={el.userName}
+						password={el.password}
+						form={`${el.domain}${el.password}`}
+						initialValues={{
+							domain: el.domain,
+							userName: el.userName,
+							password: el.password,
+						}}
+					/>
 				</div>
 			);
 		});
 	};
 
-	return <div>{renderList()}</div>;
+	return (
+		<div className="container">
+			<div className="row">{renderList()}</div>
+		</div>
+	);
 }
 
 const mapStateToProps = (state) => {
-	console.log(state.auth.passwordList);
+	console.log(state);
 	return { passwordList: state.auth.passwordList };
 };
 
