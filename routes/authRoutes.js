@@ -1,4 +1,5 @@
 const passport = require('passport');
+const decrypt = require('../services/decrypt');
 
 const app = (app) => {
 	app.get(
@@ -32,7 +33,14 @@ const app = (app) => {
 	);
 
 	app.get('/api/current', (req, res) => {
-		res.send(req.user);
+		if(!req.user){
+			res.send(req.user);
+		}else{
+			const decrypting = req.user.passwordList.map((data) => {
+				data.password = decrypt(data.password)
+			})
+			res.send(req.user);
+		}
 	});
 
 	app.get('/api/logout', (req, res) => {

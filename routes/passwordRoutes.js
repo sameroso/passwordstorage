@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
-const encrypt = require('../services/encrypt')
+const encrypt = require('../services/encrypt');
+const decrypt = require('../services/decrypt');
 
 const app = (app) => {
 	app.post('/api/savepassword', requireLogin, async (req, res) => {
@@ -10,14 +11,15 @@ const app = (app) => {
 			userName: req.body.userName,
 			password: encrypt(req.body.password),
 		};
-		const userUpdate = await User.findByIdAndUpdate(
-			 req.user._id  ,
-			{ $push: { passwordList: formList } }
-        )
-        const user = await User.findById(req.user._id)
-        
-        res.send(user)
-        
+		const userUpdate = await User.findByIdAndUpdate(req.user._id, {
+			$push: { passwordList: formList },
+		});
+		const user = await User.findById(req.user._id);
+		const decrypting = user.passwordList.map((data) =>{
+			data.password = decrypt(data.password)
+		})
+		
+		res.send(user);
 	});
 };
 

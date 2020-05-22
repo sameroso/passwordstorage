@@ -19,7 +19,6 @@ function LandingPage({ auth }) {
 }
 
 const mapStateToProps = (state) => {
-	console.log(state.auth)
 	return { auth: state.auth };
 };
 
