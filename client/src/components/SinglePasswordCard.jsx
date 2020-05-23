@@ -3,6 +3,7 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import passwordEyeHide from '../passwordeye-hide.png';
 import passwordEyeShow from '../passwordeye-show.png';
+import { reset } from 'redux-form';
 
 const PasswordCardComponent = ({
 	input,
@@ -10,20 +11,20 @@ const PasswordCardComponent = ({
 	boolean,
 	readOnlyEdit,
 }) => {
-    console.log(readOnlyEdit)
+	console.log(readOnlyEdit);
 	const [passwordEyeToggle, setPassswordEyeToggle] = useState(false);
 	const toggle = () => setPassswordEyeToggle(!passwordEyeToggle);
 	const passwordEye = passwordEyeToggle ? passwordEyeHide : passwordEyeShow;
-    const passwordShowHide = passwordEyeToggle ? 'text' : 'password';
-    
-    const renderBorder = () =>readOnlyEdit? 'none':'red solid 1px';
+	const passwordShowHide = passwordEyeToggle ? 'text' : 'password';
+
+	const renderBorder = () => (readOnlyEdit ? 'none' : 'red solid 1px');
 
 	const renderCondicionalInput = () => {
 		if (boolean === 'true') {
 			return (
 				<div className="col-sm-9">
 					<input
-						style={{ borderRadius: '7px', border:`${renderBorder()}`}}
+						style={{ borderRadius: '7px', border: `${renderBorder()}` }}
 						readOnly={readOnlyEdit}
 						{...input}
 						type="text"
@@ -35,7 +36,11 @@ const PasswordCardComponent = ({
 			return (
 				<div className="col-sm-9 d-flex">
 					<input
-						style={{ borderRadius: '7px', width: '85%',border:`${renderBorder()}` }}
+						style={{
+							borderRadius: '7px',
+							width: '85%',
+							border: `${renderBorder()}`,
+						}}
 						readOnly={readOnlyEdit}
 						{...input}
 						type={passwordShowHide}
@@ -65,8 +70,7 @@ const PasswordCardComponent = ({
 	);
 };
 
-function SinglePasswordCard({ domain, userName }) {
-
+function SinglePasswordCard({ domain, userName,reset}) {
 	const [readOnly, setReadOnly] = useState(true);
 
 	const renderButton = () => {
@@ -76,7 +80,7 @@ function SinglePasswordCard({ domain, userName }) {
 					<button
 						type="button"
 						className="btn btn-outline-primary"
-						onClick={() =>setReadOnly(false)}>
+						onClick={() => setReadOnly(false)}>
 						EDIT
 					</button>
 					<button type="button" className="btn btn-outline-danger">
@@ -90,7 +94,10 @@ function SinglePasswordCard({ domain, userName }) {
 					<button
 						type="button"
 						className="btn btn-outline-primary"
-						onClick={() =>setReadOnly(true)}>
+						onClick={() => {
+							setReadOnly(true);
+							reset();
+						}}>
 						CANCEL
 					</button>
 					<button type="button" className="btn btn-outline-danger">
