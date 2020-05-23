@@ -5,13 +5,14 @@ import passwordEyeHide from '../passwordeye-hide.png';
 import passwordEyeShow from '../passwordeye-show.png';
 import { reset } from 'redux-form';
 
+import { deletePassword } from '../actions';
+
 const PasswordCardComponent = ({
 	input,
 	labelValue,
 	boolean,
 	readOnlyEdit,
 }) => {
-	console.log(readOnlyEdit);
 	const [passwordEyeToggle, setPassswordEyeToggle] = useState(false);
 	const toggle = () => setPassswordEyeToggle(!passwordEyeToggle);
 	const passwordEye = passwordEyeToggle ? passwordEyeHide : passwordEyeShow;
@@ -70,9 +71,8 @@ const PasswordCardComponent = ({
 	);
 };
 
-function SinglePasswordCard({ domain, userName,reset}) {
+function SinglePasswordCard({_id, domain, userName, reset, deletePassword }) {
 	const [readOnly, setReadOnly] = useState(true);
-
 	const renderButton = () => {
 		if (readOnly) {
 			return (
@@ -83,7 +83,10 @@ function SinglePasswordCard({ domain, userName,reset}) {
 						onClick={() => setReadOnly(false)}>
 						EDIT
 					</button>
-					<button type="button" className="btn btn-outline-danger">
+					<button
+						onClick={()=>deletePassword({_id})}
+						type="button"
+						className="btn btn-outline-danger">
 						DELETE
 					</button>
 				</div>
@@ -144,4 +147,6 @@ function SinglePasswordCard({ domain, userName,reset}) {
 
 const SinglePasswordForm = reduxForm({})(SinglePasswordCard);
 
-export default SinglePasswordForm;
+
+
+export default connect(null,{ deletePassword })(SinglePasswordForm);

@@ -9,6 +9,7 @@ function PasswordList({ passwordList }) {
 			return (
 				<div className="col-md-6" key={`${el.domain}${el.userName}`}>
 					<SinglePasswordCard
+						_id={el._id}
 						domain={el.domain}
 						userName={el.userName}
 						password={el.password}
@@ -32,7 +33,6 @@ function PasswordList({ passwordList }) {
 }
 
 const mapStateToProps = (state) => {
-	console.log(state);
 	return { passwordList: state.auth.passwordList };
 };
 

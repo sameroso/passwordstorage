@@ -142,7 +142,8 @@ function CreatePassword({ savePassword, history, auth, handleSubmit }) {
 }
 
 const mapStateToProps = (state) => {
-	return { auth: state.auth /* createFormValues: state.form.createPassword */ };
+	console.log(state)
+	return { auth: state.auth};
 };
 function validate(values) {
 	const errors = {};
