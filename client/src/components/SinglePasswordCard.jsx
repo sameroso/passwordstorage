@@ -4,31 +4,37 @@ import { connect } from 'react-redux';
 import passwordEyeHide from '../passwordeye-hide.png';
 import passwordEyeShow from '../passwordeye-show.png';
 
-const PasswordCardComponent = ({ input, labelValue, boolean }) => {
+const PasswordCardComponent = ({
+	input,
+	labelValue,
+	boolean,
+	readOnlyEdit,
+}) => {
+    console.log(readOnlyEdit)
 	const [passwordEyeToggle, setPassswordEyeToggle] = useState(false);
 	const toggle = () => setPassswordEyeToggle(!passwordEyeToggle);
 	const passwordEye = passwordEyeToggle ? passwordEyeHide : passwordEyeShow;
 	const passwordShowHide = passwordEyeToggle ? 'text' : 'password';
 
-	const renderCondicional = () => {
-		if (boolean === "true") {
+	const renderCondicionalInput = () => {
+		if (boolean === 'true') {
 			return (
-                <div className="col-sm-9">
-				<input
-					style={{ borderRadius: '7px' }}
-					readOnly
-					{...input}
-					type="text"
-					className="form-control-plaintext bg-white text-center"
-				/>
-                </div>
+				<div className="col-sm-9">
+					<input
+						style={{ borderRadius: '7px' }}
+						readOnly={readOnlyEdit}
+						{...input}
+						type="text"
+						className="form-control-plaintext bg-white text-center"
+					/>
+				</div>
 			);
-		} else{
+		} else {
 			return (
 				<div className="col-sm-9 d-flex">
 					<input
-						style={{ borderRadius: '7px', width:'80%'}}
-						readOnly
+						style={{ borderRadius: '7px', width: '85%' }}
+						readOnly={readOnlyEdit}
 						{...input}
 						type={passwordShowHide}
 						className="form-control-plaintext bg-white text-center"
@@ -51,14 +57,47 @@ const PasswordCardComponent = ({ input, labelValue, boolean }) => {
 		<>
 			<div className="form-group row mx-auto">
 				<label className="col-sm-3 col-form-label">{labelValue}</label>
-                    {renderCondicional()}
-				</div>
-			
+				{renderCondicionalInput()}
+			</div>
 		</>
 	);
 };
 
 function SinglePasswordCard({ domain, userName }) {
+
+	const [readOnly, setReadOnly] = useState(true);
+
+	const renderButton = () => {
+		if (readOnly) {
+			return (
+				<div className="row justify-content-around">
+					<button
+						type="button"
+						className="btn btn-outline-primary"
+						onClick={() =>setReadOnly(false)}>
+						EDIT
+					</button>
+					<button type="button" className="btn btn-outline-danger">
+						DELETE
+					</button>
+				</div>
+			);
+		} else {
+			return (
+				<div className="row justify-content-around">
+					<button
+						type="button"
+						className="btn btn-outline-primary"
+						onClick={() =>setReadOnly(true)}>
+						CANCEL
+					</button>
+					<button type="button" className="btn btn-outline-danger">
+						SAVE
+					</button>
+				</div>
+			);
+		}
+	};
 	return (
 		<form
 			className="text-center py-4 my-4"
@@ -69,31 +108,27 @@ function SinglePasswordCard({ domain, userName }) {
 			}}
 			key={`${domain}${userName}`}>
 			<Field
+				readOnlyEdit={readOnly}
 				boolean="true"
 				labelValue="Domain"
 				component={PasswordCardComponent}
 				name="domain"
 			/>
 			<Field
+				readOnlyEdit={readOnly}
 				boolean="true"
 				labelValue="User"
 				component={PasswordCardComponent}
 				name="userName"
 			/>
 			<Field
+				readOnlyEdit={readOnly}
 				boolean="false"
 				labelValue="Password"
 				component={PasswordCardComponent}
 				name="password"
 			/>
-			<div className="row justify-content-around">
-				<button type="button" class="btn btn-outline-primary">
-					EDIT
-				</button>
-				<button type="button" class="btn btn-outline-danger">
-					DELETE
-				</button>
-			</div>
+			{renderButton()}
 		</form>
 	);
 }
