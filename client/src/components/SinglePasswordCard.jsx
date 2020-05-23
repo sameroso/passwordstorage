@@ -14,14 +14,16 @@ const PasswordCardComponent = ({
 	const [passwordEyeToggle, setPassswordEyeToggle] = useState(false);
 	const toggle = () => setPassswordEyeToggle(!passwordEyeToggle);
 	const passwordEye = passwordEyeToggle ? passwordEyeHide : passwordEyeShow;
-	const passwordShowHide = passwordEyeToggle ? 'text' : 'password';
+    const passwordShowHide = passwordEyeToggle ? 'text' : 'password';
+    
+    const renderBorder = () =>readOnlyEdit? 'none':'red solid 1px';
 
 	const renderCondicionalInput = () => {
 		if (boolean === 'true') {
 			return (
 				<div className="col-sm-9">
 					<input
-						style={{ borderRadius: '7px' }}
+						style={{ borderRadius: '7px', border:`${renderBorder()}`}}
 						readOnly={readOnlyEdit}
 						{...input}
 						type="text"
@@ -33,7 +35,7 @@ const PasswordCardComponent = ({
 			return (
 				<div className="col-sm-9 d-flex">
 					<input
-						style={{ borderRadius: '7px', width: '85%' }}
+						style={{ borderRadius: '7px', width: '85%',border:`${renderBorder()}` }}
 						readOnly={readOnlyEdit}
 						{...input}
 						type={passwordShowHide}
