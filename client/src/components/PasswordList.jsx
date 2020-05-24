@@ -7,7 +7,7 @@ function PasswordList({ passwordList }) {
 	const renderList = () => {
 		return passwordList.map((el) => {
 			return (
-				<div className="col-md-6" key={`${el.domain}${el.userName}`}>
+				<div className="col-md-6" key={`${el._id}`}>
 					<SinglePasswordCard
 						_id={el._id}
 						domain={el.domain}

@@ -1,90 +1,27 @@
 import React, { useState } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
-import passwordEyeHide from '../passwordeye-hide.png';
-import passwordEyeShow from '../passwordeye-show.png';
+
 import { reset } from 'redux-form';
 
 import { deletePassword } from '../actions';
 import { editPassword } from '../actions';
 
-const PasswordCardComponent = ({
-	input,
-	labelValue,
-	boolean,
-	readOnlyEdit,
-}) => {
-	const [passwordEyeToggle, setPassswordEyeToggle] = useState(false);
-	const toggle = () => setPassswordEyeToggle(!passwordEyeToggle);
-	const passwordEye = passwordEyeToggle ? passwordEyeHide : passwordEyeShow;
-	const passwordShowHide = passwordEyeToggle ? 'text' : 'password';
-
-	const renderBorder = () => (readOnlyEdit ? 'none' : 'red solid 1px');
-
-	const renderCondicionalInput = () => {
-		if (boolean === 'true') {
-			return (
-				<div className="col-sm-9">
-					<input
-						style={{ borderRadius: '7px', border: `${renderBorder()}` }}
-						readOnly={readOnlyEdit}
-						{...input}
-						type="text"
-						className="form-control-plaintext bg-white text-center"
-					/>
-				</div>
-			);
-		} else {
-			return (
-				<div className="col-sm-9 d-flex">
-					<input
-						style={{
-							borderRadius: '7px',
-							width: '85%',
-							border: `${renderBorder()}`,
-						}}
-						readOnly={readOnlyEdit}
-						{...input}
-						type={passwordShowHide}
-						className="form-control-plaintext bg-white text-center"
-					/>
-					<div className="input-group-append" onClick={toggle}>
-						<span className="input-group-text">
-							<img
-								src={passwordEye}
-								alt=""
-								className="img-fluid"
-								style={{ height: '30px', width: '30px' }}
-							/>
-						</span>
-					</div>
-				</div>
-			);
-		}
-	};
-	return (
-		<>
-			<div className="form-group row mx-auto">
-				<label className="col-sm-3 col-form-label">{labelValue}</label>
-				{renderCondicionalInput()}
-			</div>
-		</>
-	);
-};
+import PasswordCardField from './PasswordCardField';
 
 function SinglePasswordCard({
+	handleSubmit,
 	editPassword,
 	_id,
-	domain,
-	userName,
 	reset,
 	deletePassword,
 	formData,
 }) {
 	const [readOnly, setReadOnly] = useState(true);
-	const onEdit = () =>{
-		editPassword({...formData.values,_id});
-	}
+	const onEdit = async () => {
+		 await editPassword({ ...formData.values, _id });
+		 setReadOnly(true)
+	};
 	const renderButton = () => {
 		if (readOnly) {
 			return (
@@ -115,10 +52,7 @@ function SinglePasswordCard({
 						}}>
 						CANCEL
 					</button>
-					<button
-						onClick={onEdit}
-						type="button"
-						className="btn btn-outline-danger">
+					<button type="submit" className="btn btn-outline-danger">
 						SAVE
 					</button>
 				</div>
@@ -127,32 +61,35 @@ function SinglePasswordCard({
 	};
 	return (
 		<form
+			onSubmit={(e) => {
+				e.preventDefault();
+				handleSubmit(onEdit());
+			}}
 			className="text-center py-4 my-4"
 			style={{
 				border: 'rgba(1,1,1) solid 1px',
 				borderRadius: '8px',
 				backgroundColor: 'rgb(191, 191, 181)',
-			}}
-			key={`${domain}${userName}`}>
+			}}>
 			<Field
 				readOnlyEdit={readOnly}
 				boolean="true"
 				labelValue="Domain"
-				component={PasswordCardComponent}
+				component={PasswordCardField}
 				name="domain"
 			/>
 			<Field
 				readOnlyEdit={readOnly}
 				boolean="true"
 				labelValue="User"
-				component={PasswordCardComponent}
+				component={PasswordCardField}
 				name="userName"
 			/>
 			<Field
 				readOnlyEdit={readOnly}
 				boolean="false"
 				labelValue="Password"
-				component={PasswordCardComponent}
+				component={PasswordCardField}
 				name="password"
 			/>
 			{renderButton()}
@@ -160,10 +97,16 @@ function SinglePasswordCard({
 	);
 }
 
-const SinglePasswordForm = reduxForm({})(SinglePasswordCard);
+const SinglePasswordForm = reduxForm({ enableReinitialize: true })(
+	SinglePasswordCard
+);
 
 const mapStateToProps = (state, ownProps) => {
+	console.log(state.form[ownProps._id]);
 	return { formData: state.form[ownProps._id] };
 };
 
-export default connect(mapStateToProps, { deletePassword,editPassword })(SinglePasswordForm);
+export default connect(mapStateToProps, {
+	deletePassword,
+	editPassword,
+})(SinglePasswordForm);
