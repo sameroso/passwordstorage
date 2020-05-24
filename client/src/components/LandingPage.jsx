@@ -3,13 +3,17 @@ import { connect } from 'react-redux';
 
 import LoginPage from './LoginPage';
 import DashBoard from './DashBoard';
+import NavBar from './Navbar';
 
 function LandingPage({ auth }) {
 	if(auth === null){
 		return <div>loading</div>
 	}else if (auth){
 		return(
-			<div><DashBoard/></div>
+			<div>
+				<NavBar />
+				<DashBoard/>
+				</div>
 		);
 	}else if(auth === false) {
 		return(

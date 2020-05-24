@@ -1,9 +1,7 @@
 #root,html{
-    background-color: rgba(199, 163, 86, 0.233);
+    background-color: rgba(29, 15, 82, 0.233);
 }
-.background-login{
-    background-color: transparent
-}
+
 .fb-btn{
     padding:10px 10px;
     background-color: rgb(52, 52, 179);

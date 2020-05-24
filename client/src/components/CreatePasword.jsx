@@ -7,6 +7,7 @@ import { savePassword } from '../actions';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import LoginPage from './LoginPage';
+import Navbar from './Navbar';
 
 const useRenderInput = ({
 	placeholder,
@@ -94,6 +95,7 @@ function CreatePassword({ savePassword, history, auth, handleSubmit }) {
 	} else {
 		return (
 			<div>
+				<Navbar/>
 				<div className="container">
 					<form className="mx-auto" onSubmit={handleSubmit(formSubmit)}>
 						<Field
