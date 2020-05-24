@@ -6,7 +6,7 @@ import passwordLogo from '../passwordlogo.png';
 function LoginPage() {
 	return (
 		<div className="size d-flex">
-			<div className="container d-flex my-auto">
+			<div className="container d-flex">
 				<div className="my-auto mx-auto">
 					<div className="row">
 						<img
@@ -16,11 +16,11 @@ function LoginPage() {
 						/>
 					</div>
 					<div className="row">
-						<h2 className="text-center mx-auto">
-							Store Your Passwords Safely!!
+						<h2 className="text-center mx-auto mb-5">
+							Password Storage
 						</h2>
 					</div>
-					<div className="mt-5">
+					<div className="mt-3">
 						<LoginBtns />
 					</div>
 				</div>
