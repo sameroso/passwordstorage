@@ -6,7 +6,7 @@ import passwordLogo from '../passwordlogo.png';
 
 function LoginPage() {
 	return (
-		<div className="size d-flex">
+		<div className="size d-flex bg-login">
 			<div className="container d-flex">
 				<div className="my-auto mx-auto">
 				
