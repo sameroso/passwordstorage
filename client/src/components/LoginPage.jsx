@@ -3,11 +3,13 @@ import LoginBtns from './LoginBtns';
 import './LoginPage.css';
 import passwordLogo from '../passwordlogo.png';
 
+
 function LoginPage() {
 	return (
 		<div className="size d-flex">
 			<div className="container d-flex">
 				<div className="my-auto mx-auto">
+				
 					<div className="row">
 						<img
 							className="mx-auto img-fluid logo-size"
@@ -25,7 +27,7 @@ function LoginPage() {
 							Store your password safely	
 						</p>
 					</div>
-					<div className="mt-3">
+					<div className="mt-5">
 						<LoginBtns />
 					</div>
 				</div>
