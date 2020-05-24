@@ -12,7 +12,7 @@ function LoginBtns() {
 						<a href="/auth/facebook"><button className="fb-btn">
 							<div className="d-flex">
 								<img src={fbLogo}></img>
-								<h4 className="my-auto text-white ml-3">Login with Facebook</h4>
+								<h5 className="my-auto text-white ml-2">Login with Facebook</h5>
 							</div>
 						</button>
 						</a>
@@ -23,7 +23,7 @@ function LoginBtns() {
 						<a href="/auth/google"><button className="google-btn">
 							<div className="d-flex">
 								<img src={googleLogo}></img>
-								<h4 className="my-auto text-danger ml-3">Login with Google</h4>
+								<h5 className="my-auto text-white ml-3">Login with Google</h5>
 							</div>
 						</button>
 						</a>
