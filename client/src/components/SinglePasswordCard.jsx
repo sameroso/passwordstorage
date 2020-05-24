@@ -6,6 +6,7 @@ import passwordEyeShow from '../passwordeye-show.png';
 import { reset } from 'redux-form';
 
 import { deletePassword } from '../actions';
+import { editPassword } from '../actions';
 
 const PasswordCardComponent = ({
 	input,
@@ -71,8 +72,19 @@ const PasswordCardComponent = ({
 	);
 };
 
-function SinglePasswordCard({_id, domain, userName, reset, deletePassword }) {
+function SinglePasswordCard({
+	editPassword,
+	_id,
+	domain,
+	userName,
+	reset,
+	deletePassword,
+	formData,
+}) {
 	const [readOnly, setReadOnly] = useState(true);
+	const onEdit = () =>{
+		editPassword({...formData.values,_id});
+	}
 	const renderButton = () => {
 		if (readOnly) {
 			return (
@@ -84,7 +96,7 @@ function SinglePasswordCard({_id, domain, userName, reset, deletePassword }) {
 						EDIT
 					</button>
 					<button
-						onClick={()=>deletePassword({_id})}
+						onClick={() => deletePassword({ _id })}
 						type="button"
 						className="btn btn-outline-danger">
 						DELETE
@@ -103,7 +115,10 @@ function SinglePasswordCard({_id, domain, userName, reset, deletePassword }) {
 						}}>
 						CANCEL
 					</button>
-					<button type="button" className="btn btn-outline-danger">
+					<button
+						onClick={onEdit}
+						type="button"
+						className="btn btn-outline-danger">
 						SAVE
 					</button>
 				</div>
@@ -147,6 +162,8 @@ function SinglePasswordCard({_id, domain, userName, reset, deletePassword }) {
 
 const SinglePasswordForm = reduxForm({})(SinglePasswordCard);
 
+const mapStateToProps = (state, ownProps) => {
+	return { formData: state.form[ownProps._id] };
+};
 
-
-export default connect(null,{ deletePassword })(SinglePasswordForm);
+export default connect(mapStateToProps, { deletePassword,editPassword })(SinglePasswordForm);

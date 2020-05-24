@@ -1,4 +1,5 @@
 import axios from "axios"
+import {reset} from 'redux-form';
 
 export const fetchUser = () => async (dispatch) =>{
    const response = await axios.get('/api/current')
@@ -13,6 +14,11 @@ export const savePassword = (formValues,history) => async (dispatch) => {
 }
 export const deletePassword = (id) => async (dispatch) => {
     const response = await axios.post('/api/deletepassword', id);
+    dispatch({type:"FETCH_USER", payload:response.data})
+
+}
+export const editPassword = (values) => async (dispatch) => {
+    const response = await axios.patch('/api/updatepassword', values);
     dispatch({type:"FETCH_USER", payload:response.data})
 
 }

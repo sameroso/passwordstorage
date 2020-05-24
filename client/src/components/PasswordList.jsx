@@ -13,7 +13,7 @@ function PasswordList({ passwordList }) {
 						domain={el.domain}
 						userName={el.userName}
 						password={el.password}
-						form={`${el.domain}${el.password}`}
+						form={`${el._id}`}
 						initialValues={{
 							domain: el.domain,
 							userName: el.userName,
