@@ -3,5 +3,10 @@
 }
 .logo-size{
     height: 140px;
-    margin-bottom: 30px;
+    margin-bottom: 5px;
+}
+.font{
+    font-family: 'Lobster', cursive;
+    color: white;
+    text-align: center;
 }
