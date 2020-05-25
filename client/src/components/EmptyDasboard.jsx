@@ -25,13 +25,6 @@ function EmptyDashBoard() {
 						<button className="mx-auto btn-start-empty-dashboard">Start</button>
 					</Link>
 				</div>
-				<div className="row pt-5">
-					<a href="api/logout" className="mx-auto">
-						<button className="mx-auto btn-logout-empty-dashboard">
-							Logout
-						</button>
-					</a>
-				</div>
 			</div>
 		</div>
 	);

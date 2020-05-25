@@ -16,7 +16,7 @@ function DashBoard({ passwordList }) {
 		} else {
 			return (
 				<>
-					<NavBar />
+					
 					<Link to="/new">
 						<button>New</button>
 					</Link>

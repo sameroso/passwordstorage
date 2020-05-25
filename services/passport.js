@@ -2,7 +2,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const mongoose = require('mongoose');
-const keys = require('../config/keys')
+const keys = require('../config/keys');
 
 const User = mongoose.model('users');
 
@@ -19,23 +19,26 @@ passport.deserializeUser((id, done) => {
 passport.use(
 	new GoogleStrategy(
 		{
-			clientID:keys.googleClientID,
-			clientSecret:keys.googleClientSecret,
+			clientID: keys.googleClientID,
+			clientSecret: keys.googleClientSecret,
 			callbackURL: '/auth/google/callback',
 			proxy: true,
 		},
 		async (accessToken, refreshToken, profile, done) => {
-			try{
+			try {
 				const existingUser = await User.findOne({ googleId: profile.id });
-			if (existingUser) {
-				return done(null, existingUser);
+				if (existingUser) {
+					return done(null, existingUser);
+				}
+				const user = await new User({
+					googleId: profile.id,
+					profilePic: profile._json.picture,
+					profileName: profile.name.givenName,
+				}).save();
+				done(null, user);
+			} catch (err) {
+				console.log(err);
 			}
-			const user = await new User({ googleId: profile.id }).save();
-			done(null, user);
-			}catch(err){
-				console.log(err)
-			}
-			
 		}
 	)
 );
@@ -46,20 +49,25 @@ passport.use(
 			clientID: keys.facebookAppID,
 			clientSecret: keys.facebookClientSecret,
 			callbackURL: '/auth/facebook/callback',
-			proxy:true
+			profileFields:['name','id','picture.type(large)','displayName'],
+			proxy: true,
 		},
 		async (accessToken, refreshToken, profile, done) => {
-			try{
+			try {
 				const existingUser = await User.findOne({ facebookId: profile.id });
-			if (existingUser) {
-				return done(null, existingUser);
+				if (existingUser) {
+					return done(null, existingUser);
+				}
+				console.log(profile);
+				const user = await new User({
+					facebookId: profile.id,
+					profilePic: profile.photos ? profile.photos[0].value : '/img/faces/unknown-user-pic.jpg',
+					profileName: profile.name.givenName,
+				}).save();
+				done(null, user);
+			} catch (err) {
+				console.log(err);
 			}
-			const user = await new User({ facebookId: profile.id }).save();
-			done(null, user);
-			}catch(err){
-				console.log(err)
-			}
-			
 		}
 	)
 );
