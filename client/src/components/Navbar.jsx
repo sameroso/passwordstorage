@@ -21,7 +21,7 @@ function Navbar({ auth }) {
 							aria-haspopup="true"
 							aria-expanded="false">
 							<div className="d-flex">
-								<img className="profile-pic my-auto mr-2" src={auth.profilePic} />
+								<img className="profile-pic my-auto mr-1" src={auth.profilePic} />
 								<p className="text-white mb-0 my-auto">{auth.profileName} &#8609;</p>
 							</div>
 						</button>
@@ -47,9 +47,9 @@ function Navbar({ auth }) {
 		<div className="background py-2">
 			<div className="container">
 				<div className="row justify-content-between">
-					<div className="d-flex ml-3">
+					<div className="d-flex ml-2">
 						<img className="config-image my-auto" src={passwordLogo}></img>
-						<h5 className="ml-2 pt-3 font-header">
+						<h5 className="ml-2 font-header my-auto">
 							Password
 							<br />
 							Storage
