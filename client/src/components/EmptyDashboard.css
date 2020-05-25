@@ -1,0 +1,27 @@
+.empty-dashboard-logo-size {
+	height: 80px;
+}
+.bg-empty-dashboard {
+	height: 100vh;
+	background-image: linear-gradient(#27bab2, #296599);
+}
+.btn-start-empty-dashboard {
+	background-color: transparent;
+	border: white 1px solid;
+	color: white;
+	padding: 10px 60px;
+	border-radius: 25px;
+}
+.btn-start-empty-dashboard:hover {
+	background-color: rgba(40, 50, 105, 0.226);
+}
+.btn-logout-empty-dashboard {
+	background-color: transparent;
+	border: white 1px solid;
+	color: white;
+	padding: 10px 60px;
+	border-radius: 25px;
+}
+.btn-logout-empty-dashboard:hover {
+	background-color: rgba(40, 50, 105, 0.226);
+}

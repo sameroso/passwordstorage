@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import LoginPage from './LoginPage';
 import DashBoard from './DashBoard';
-import NavBar from './Navbar';
 
 function LandingPage({ auth }) {
 	if(auth === null){
@@ -11,7 +10,6 @@ function LandingPage({ auth }) {
 	}else if (auth){
 		return(
 			<div>
-				<NavBar />
 				<DashBoard/>
 				</div>
 		);

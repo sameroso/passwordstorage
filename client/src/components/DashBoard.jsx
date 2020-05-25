@@ -3,21 +3,20 @@ import { Link } from 'react-router-dom';
 import PasswordList from './PasswordList';
 import EmptyDashBoard from './EmptyDasboard';
 import { connect } from 'react-redux';
+import NavBar from './Navbar';
 
 function DashBoard({ passwordList }) {
 	const renderDashBoard = () => {
 		if (passwordList.length === 0) {
 			return (
 				<>
-					<Link to="/new">
-						<button>New</button>
-					</Link>
 					<EmptyDashBoard />
 				</>
 			);
 		} else {
 			return (
 				<>
+					<NavBar />
 					<Link to="/new">
 						<button>New</button>
 					</Link>
@@ -28,11 +27,7 @@ function DashBoard({ passwordList }) {
 			);
 		}
 	};
-	return (
-		<>
-			{renderDashBoard()}
-		</>
-	);
+	return <>{renderDashBoard()}</>;
 }
 
 const mapStateToProps = (state) => {
