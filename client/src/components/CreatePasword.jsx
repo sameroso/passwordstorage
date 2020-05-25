@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import passwordEyeHide from '../passwordeye-hide.png';
-import passwordEyeShow from '../passwordeye-show.png';
+import './CreatePassword.css';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { savePassword } from '../actions';
@@ -8,6 +7,8 @@ import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import LoginPage from './LoginPage';
 import Navbar from './Navbar';
+import { BsEyeFill } from 'react-icons/bs';
+import { BsEyeSlashFill } from 'react-icons/bs';
 
 const useRenderInput = ({
 	placeholder,
@@ -19,7 +20,11 @@ const useRenderInput = ({
 }) => {
 	const [passwordEyeToggle, setPassswordEyeToggle] = useState(false);
 	const toggle = () => setPassswordEyeToggle(!passwordEyeToggle);
-	const passwordEye = passwordEyeToggle ? passwordEyeHide : passwordEyeShow;
+	const passwordEye = passwordEyeToggle ? (
+		<BsEyeSlashFill className="eye-icon" size="30px" />
+	) : (
+		<BsEyeFill className="eye-icon" size="30px"/>
+	);
 	const passwordShowHide = passwordEyeToggle ? 'text' : 'password';
 
 	const renderError = (touched, error) => {
@@ -40,7 +45,7 @@ const useRenderInput = ({
 				<input
 					autoComplete="on"
 					placeholder={placeholder}
-					className="form-control"
+					className="form-control input-create"
 					id={id}
 					{...input}
 				/>
@@ -51,28 +56,20 @@ const useRenderInput = ({
 					<input
 						autoComplete="on"
 						placeholder={placeholder}
-						className="form-control"
+						className="form-control input-create input-create-password"
 						id={id}
 						{...input}
 						type={passwordShowHide}
 					/>
-					<div className="input-group-append" onClick={toggle}>
-						<span className="input-group-text">
-							<img
-								src={passwordEye}
-								alt=""
-								className="img-fluid"
-								style={{ height: '30px', width: '30px' }}
-							/>
-						</span>
-					</div>
+					<div className="my-auto" onClick={toggle}>{passwordEye}</div>
+					
 				</>
 			);
 		}
 	};
 	return (
 		<div className="form-group">
-			<label htmlFor={id} className="col-form-label">
+			<label htmlFor={id} className="col-form-label text-white">
 				{label}
 			</label>
 			<div className="d-flex">{renderCondicional()}</div>
@@ -81,7 +78,6 @@ const useRenderInput = ({
 		</div>
 	);
 };
-
 
 function CreatePassword({ savePassword, history, auth, handleSubmit }) {
 	const formSubmit = (formValues) => {
@@ -95,7 +91,7 @@ function CreatePassword({ savePassword, history, auth, handleSubmit }) {
 	} else {
 		return (
 			<div>
-				<Navbar/>
+				<Navbar />
 				<div className="container">
 					<form className="mx-auto" onSubmit={handleSubmit(formSubmit)}>
 						<Field
@@ -144,8 +140,8 @@ function CreatePassword({ savePassword, history, auth, handleSubmit }) {
 }
 
 const mapStateToProps = (state) => {
-	console.log(state)
-	return { auth: state.auth};
+	console.log(state);
+	return { auth: state.auth };
 };
 function validate(values) {
 	const errors = {};
