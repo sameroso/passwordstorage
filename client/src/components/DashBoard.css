@@ -1,6 +1,6 @@
 .add-button-style{
     background-color: rgba(15, 136, 86, 0.733);
-    padding: 10px 120px;
+    padding: 10px 89px;
     color: rgb(243, 230, 230);
     border: none;
     border-radius: 20px;  
@@ -8,7 +8,7 @@
 }
 .add-button-style:hover{
     background-color: rgba(50, 168, 119, 0.733);
-    padding: 10px 120px;
+    padding: 10px 89px;
     color: rgb(243, 230, 230);
     border: none;
     border-radius: 20px;  
