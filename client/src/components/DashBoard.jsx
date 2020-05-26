@@ -4,6 +4,7 @@ import PasswordList from './PasswordList';
 import EmptyDashBoard from './EmptyDasboard';
 import { connect } from 'react-redux';
 import NavBar from './Navbar';
+import './DashBoard.css';
 
 function DashBoard({ passwordList }) {
 	const renderDashBoard = () => {
@@ -16,10 +17,14 @@ function DashBoard({ passwordList }) {
 		} else {
 			return (
 				<>
-					
-					<Link to="/new">
-						<button>New</button>
-					</Link>
+					<div className="container">
+						<div className="row pt-3">
+							<Link to="/new" className="mx-auto">
+								<button className="add-button-style">Add New Password</button>
+							</Link>
+						</div>
+					</div>
+
 					<div>
 						<PasswordList />
 					</div>

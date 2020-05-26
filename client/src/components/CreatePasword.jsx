@@ -13,7 +13,7 @@ import { BsEyeFill } from 'react-icons/bs';
 import { BsEyeSlashFill } from 'react-icons/bs';
 import LoadingPage from './LoadingPage';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
+import 'react-toastify/dist/ReactToastify.css';
 
 const useRenderInput = ({
 	placeholder,
@@ -95,17 +95,29 @@ function CreatePassword({ savePassword, history, auth, handleSubmit }) {
 
 	const formSubmit = async (formValues) => {
 		setPasswordSave(true);
-		await savePassword(formValues, history);
-		await toast.info('Password Saved with success', {
-			position: 'top-right',
-			autoClose: 3000,
-			hideProgressBar: false,
-			closeOnClick: true,
-			pauseOnHover: true,
-			draggable: true,
-			progress: undefined,
-		});
-		setPasswordSave(false);
+		try {
+			await savePassword(formValues, history);
+			await toast.info('Password Saved with success', {
+				position: 'top-right',
+				autoClose: 3000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+			});
+		} catch {
+			toast.error('An error Ocurred, Please try later', {
+				position: 'top-right',
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+			});
+			setPasswordSave(false);
+		}
 	};
 
 	if (auth === null) {
