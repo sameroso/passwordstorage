@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import LoginPage from './LoginPage';
 import DashBoard from './DashBoard';
 import Navbar from './Navbar';
+import LoadingPage from './LoadingPage';
 
 function LandingPage({ auth }) {
 	if(auth === null){
-		return <div>loading</div>
+		return <div><LoadingPage/></div>
 	}else if (auth){
 		return(
 			<div>
