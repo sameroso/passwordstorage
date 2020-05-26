@@ -7,8 +7,13 @@ import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import LoginPage from './LoginPage';
 import Navbar from './Navbar';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import Loader from 'react-loader-spinner';
 import { BsEyeFill } from 'react-icons/bs';
 import { BsEyeSlashFill } from 'react-icons/bs';
+import LoadingPage from './LoadingPage';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 const useRenderInput = ({
 	placeholder,
@@ -23,7 +28,7 @@ const useRenderInput = ({
 	const passwordEye = passwordEyeToggle ? (
 		<BsEyeSlashFill className="eye-icon" size="30px" />
 	) : (
-		<BsEyeFill className="eye-icon" size="30px"/>
+		<BsEyeFill className="eye-icon" size="30px" />
 	);
 	const passwordShowHide = passwordEyeToggle ? 'text' : 'password';
 
@@ -61,8 +66,9 @@ const useRenderInput = ({
 						{...input}
 						type={passwordShowHide}
 					/>
-					<div className="my-auto" onClick={toggle}>{passwordEye}</div>
-					
+					<div className="my-auto" onClick={toggle}>
+						{passwordEye}
+					</div>
 				</>
 			);
 		}
@@ -80,12 +86,34 @@ const useRenderInput = ({
 };
 
 function CreatePassword({ savePassword, history, auth, handleSubmit }) {
-	const formSubmit = (formValues) => {
-		savePassword(formValues, history);
+	const [passwordSave, setPasswordSave] = useState(false);
+	const isSaving = passwordSave ? (
+		<Loader type="ThreeDots" color="white" height={20} width={20} />
+	) : (
+		'save'
+	);
+
+	const formSubmit = async (formValues) => {
+		setPasswordSave(true);
+		await savePassword(formValues, history);
+		await toast.info('Password Saved with success', {
+			position: 'top-right',
+			autoClose: 3000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+		});
+		setPasswordSave(false);
 	};
 
 	if (auth === null) {
-		return <div>loading</div>;
+		return (
+			<div>
+				<LoadingPage />
+			</div>
+		);
 	} else if (auth === false) {
 		return <LoginPage />;
 	} else {
@@ -124,12 +152,12 @@ function CreatePassword({ savePassword, history, auth, handleSubmit }) {
 
 						<div className="row justify-content-around">
 							<Link to="/">
-								<button type="button" className="btn btn-outline-success">
+								<button type="button" className="back-btn">
 									back
 								</button>
 							</Link>
-							<button type="submit" className="btn btn-outline-danger">
-								Save
+							<button type="submit" className="save-btn">
+								{isSaving}
 							</button>
 						</div>
 					</form>
