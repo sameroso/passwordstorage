@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 
 import './PasswordCardField.css';
 
-import passwordEyeHide from '../passwordeye-hide.png';
-import passwordEyeShow from '../passwordeye-show.png';
+
 import { BsEyeFill } from 'react-icons/bs';
 import { BsEyeSlashFill } from 'react-icons/bs';
 import { CopyToClipboard } from 'react-copy-to-clipboard';

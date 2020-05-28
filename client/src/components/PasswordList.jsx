@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import SinglePasswordCard from './SinglePasswordCard';
+import './PasswordList.css';
+import { BsSearch } from 'react-icons/bs';
 
 function PasswordList({ passwordList }) {
 	const renderList = () => {
@@ -47,7 +49,7 @@ function PasswordList({ passwordList }) {
 	const [searchInput, setSearchInput] = useState('');
 	const [filteredList, setFilteredList] = useState([]);
 	const findElements = (e) => {
-		const x = passwordList.filter((el) => {
+		const filteredElements = passwordList.filter((el) => {
 			if (
 				el.domain.startsWith(e.target.value) ||
 				el.userName.startsWith(e.target.value) ||
@@ -56,19 +58,21 @@ function PasswordList({ passwordList }) {
 				return el;
 			}
 		});
-		setFilteredList(x);
+		setFilteredList(filteredElements);
 	};
 	return (
 		<div className="container">
-			<div className="row">
+			<div className="row search-bar-container mt-3">
 				<input
-					style={{ margin:'auto auto',marginTop:"10px"}}
+					className="search-bar"
 					value={searchInput}
 					onChange={(e) => {
 						setSearchInput(e.target.value);
 						findElements(e);
 					}}
+					placeholder="Search for passwords domains or user names"
 				/>
+				<BsSearch className="my-auto text-white"/>
 			</div>
 			<div className="row">{renderList()}</div>
 		</div>

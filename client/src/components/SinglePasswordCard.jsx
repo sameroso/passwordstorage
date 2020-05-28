@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { reduxForm, Field, submit } from 'redux-form';
+import { reduxForm, Field} from 'redux-form';
 import { connect } from 'react-redux';
 
 import { deletePassword } from '../actions';

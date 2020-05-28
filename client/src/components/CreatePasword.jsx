@@ -180,7 +180,6 @@ function CreatePassword({ savePassword, history, auth, handleSubmit }) {
 }
 
 const mapStateToProps = (state) => {
-	console.log(state);
 	return { auth: state.auth };
 };
 function validate(values) {
