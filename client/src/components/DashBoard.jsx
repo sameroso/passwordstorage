@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import PasswordList from './PasswordList';
 import EmptyDashBoard from './EmptyDasboard';
 import { connect } from 'react-redux';
-import NavBar from './Navbar';
 import './DashBoard.css';
 
 function DashBoard({ passwordList }) {

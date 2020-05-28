@@ -1,0 +1,36 @@
+.modal-body-style{
+    background-color: rgba(45, 152, 160, 0.336);
+}
+.modal-bg-config{
+    background-color: rgba(16, 68, 104, 0.795);
+    border-radius: 20px;
+    border: rgba(255, 255, 255, 0.363) 1px solid;
+}
+.close-btn-style{
+    color: white;
+    border-radius: 7px;
+    background-color: teal;
+    border: none;
+    padding: 6px 15px;
+}
+.close-btn-style:hover{
+    color: white;
+    border-radius: 7px;
+    background-color: rgba(38, 150, 150, 0.562);
+    border: none;
+    padding: 6px 15px;
+}
+.action-btn-style{
+    color: white;
+    border-radius: 7px;
+    background-color: rgb(134, 4, 4);
+    border: none;
+    padding: 6px 15px;
+}
+.action-btn-style:hover{
+    color: white;
+    border-radius: 7px;
+    background-color: rgba(228, 62, 62, 0.562);
+    border: none;
+    padding: 6px 15px;
+}

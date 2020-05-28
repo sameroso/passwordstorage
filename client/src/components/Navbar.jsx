@@ -2,8 +2,11 @@ import React from 'react';
 import './Navbar.css';
 import passwordLogo from '../passwordlogo.png';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import Modal from './Modal';
+import { deleteAccount } from '../actions';
 
-function Navbar({ auth }) {
+function Navbar({ auth, deleteAccount }) {
 	const renderProfile = () => {
 		if (auth === false) {
 			return null;
@@ -12,7 +15,7 @@ function Navbar({ auth }) {
 		} else {
 			return (
 				<div className="d-flex mr-4">
-					<div class="dropdown my-auto">
+					<div className="dropdown my-auto">
 						<button
 							className="dropdown-config dropdown-toggle"
 							type="button"
@@ -21,15 +24,25 @@ function Navbar({ auth }) {
 							aria-haspopup="true"
 							aria-expanded="false">
 							<div className="d-flex">
-								<img className="profile-pic my-auto mr-1" src={auth.profilePic} />
-								<p className="text-white mb-0 my-auto">{auth.profileName} &#8609;</p>
+								<img
+									className="profile-pic my-auto mr-1"
+									src={auth.profilePic}
+									alt=""
+								/>
+								<p className="text-white mb-0 my-auto">
+									{auth.profileName} &#8609;
+								</p>
 							</div>
 						</button>
 						<div className="dropdown-menu" aria-labelledby="dropdownMenu">
 							<button className="dropdown-item" type="button">
 								About Us
 							</button>
-							<button className="dropdown-item" type="button">
+							<button
+								className="dropdown-item"
+								type="button"
+								data-toggle="modal"
+								data-target="#deleteAccountModal">
 								Delete Account
 							</button>
 							<button className="dropdown-item" type="button">
@@ -39,6 +52,13 @@ function Navbar({ auth }) {
 							</button>
 						</div>
 					</div>
+					<Modal
+						id="deleteAccountModal"
+						actionName="delete account"
+						onAction={deleteAccount}
+						btnType="button"
+						type="account"
+					/>
 				</div>
 			);
 		}
@@ -47,14 +67,19 @@ function Navbar({ auth }) {
 		<div className="background py-2">
 			<div className="container">
 				<div className="row justify-content-between">
-					<div className="d-flex ml-2">
-						<img className="config-image my-auto" src={passwordLogo}></img>
-						<h5 className="ml-2 font-header my-auto">
-							Password
-							<br />
-							Storage
-						</h5>
-					</div>
+					<Link to="/">
+						<div className="d-flex ml-2">
+							<img
+								className="config-image my-auto"
+								src={passwordLogo}
+								alt="Logo"></img>
+							<h5 className="ml-2 font-header my-auto">
+								Password
+								<br />
+								Storage
+							</h5>
+						</div>
+					</Link>
 					{renderProfile()}
 				</div>
 			</div>
@@ -66,4 +91,4 @@ const mapStateToProps = (state) => {
 	return { auth: state.auth };
 };
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps, { deleteAccount })(Navbar);

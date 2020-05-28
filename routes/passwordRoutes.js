@@ -48,15 +48,13 @@ const app = (app) => {
 
 		const index = userUpdate.passwordList.findIndex((el) => {
 			return el._id.toString() === req.body._id;
-		})
+		});
 
-		
 		userUpdate.passwordList[index].domain = formList.domain;
 		userUpdate.passwordList[index].userName = formList.userName;
 		userUpdate.passwordList[index].password = formList.password;
 
 		const updated = await userUpdate.save();
-	
 
 		const user = await User.findById(req.user._id);
 		const decrypting = user.passwordList.map((data) => {
@@ -64,6 +62,11 @@ const app = (app) => {
 		});
 
 		res.send(user);
+	});
+	app.post('/api/deleteaccount', async (req, res) => {
+		const User = mongoose.model('users');
+		const user = await User.findByIdAndDelete(req.user._id);
+		res.send(false)
 	});
 };
 

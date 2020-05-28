@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm, Field, submit } from 'redux-form';
 import { connect } from 'react-redux';
-
-import { reset } from 'redux-form';
 
 import { deletePassword } from '../actions';
 import { editPassword } from '../actions';
 
 import PasswordCardField from './PasswordCardField';
+import './SinglePasswordCard.css';
+import { BsFillTrashFill } from 'react-icons/bs';
+import { MdModeEdit } from 'react-icons/md';
+import { MdCancel } from 'react-icons/md';
+import { MdSave } from 'react-icons/md';
+import Modal from './Modal';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import Loader from 'react-loader-spinner';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SinglePasswordCard({
 	handleSubmit,
@@ -18,43 +26,136 @@ function SinglePasswordCard({
 	formData,
 }) {
 	const [readOnly, setReadOnly] = useState(true);
+
+	const [deleting, setDeleting] = useState(true);
+	const isDeleting = deleting ? (
+		<BsFillTrashFill
+			className="card-icon"
+			size="20px"
+			data-toggle="modal"
+			data-target="#deleteModal"
+		/>
+	) : (
+		<Loader type="ThreeDots" color="white" height={20} width={20} />
+	);
+	const [saving, setSaving] = useState(true);
+	const isSaving = saving ? (
+		<MdSave
+			className="card-icon"
+			size="20px"
+			data-toggle="modal"
+			data-target="#updateModal"
+		/>
+	) : (
+		<Loader type="ThreeDots" color="white" height={20} width={20} />
+	);
+
 	const onEdit = async () => {
-		 await editPassword({ ...formData.values, _id });
-		 setReadOnly(true)
+		try {
+			setSaving(false);
+			await editPassword({ ...formData.values, _id });
+			setReadOnly(true);
+			setSaving(true);
+			await toast.info('Password Updated with success', {
+				className: 'bg-delete-popup-sucess',
+				position: 'top-right',
+				autoClose: 3000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+			});
+		} catch {
+			toast.error('An error Ocurred, Please try later', {
+				className: 'bg-delete-popup-error',
+				position: 'top-right',
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+			});
+			setSaving(true);
+		}
+	};
+
+	const onDeletePassword = async () => {
+		try {
+			setDeleting(false);
+			await deletePassword({ _id });
+			await toast.info('Password Deleted with success', {
+				className: 'bg-delete-popup-sucess',
+				position: 'top-right',
+				autoClose: 3000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+			});
+		} catch {
+			toast.error('An error Ocurred, Please try later', {
+				className: 'bg-delete-popup-error',
+				position: 'top-right',
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+			});
+			setDeleting(true);
+		}
 	};
 	const renderButton = () => {
 		if (readOnly) {
 			return (
-				<div className="row justify-content-around">
-					<button
-						type="button"
-						className="btn btn-outline-primary"
-						onClick={() => setReadOnly(false)}>
-						EDIT
-					</button>
-					<button
-						onClick={() => deletePassword({ _id })}
-						type="button"
-						className="btn btn-outline-danger">
-						DELETE
-					</button>
+				<div className="container">
+					<div className="row justify-content-end mb-2">
+						<button
+							className="card-btn mr-3 my-auto"
+							type="button"
+							onClick={() => setReadOnly(false)}>
+							<MdModeEdit className="card-icon" size="20px" />
+						</button>
+						<button className="card-btn mr-3 my-auto" type="button">
+							{isDeleting}
+						</button>
+						<Modal
+							id="deleteModal"
+							actionName="delete"
+							onAction={onDeletePassword}
+							btnType="button"
+							type="password"
+						/>
+					</div>
 				</div>
 			);
 		} else {
 			return (
-				<div className="row justify-content-around">
-					<button
-						type="button"
-						className="btn btn-outline-primary"
-						onClick={() => {
-							setReadOnly(true);
-							reset();
-						}}>
-						CANCEL
-					</button>
-					<button type="submit" className="btn btn-outline-danger">
-						SAVE
-					</button>
+				<div className="container">
+					<div className="row justify-content-end">
+						<button
+							type="button"
+							className="card-btn mr-3 my-auto"
+							onClick={() => {
+								setReadOnly(true);
+								reset();
+							}}>
+							<MdCancel className="card-icon" size="20px" />
+						</button>
+						<button type="submit" className="card-btn mr-3 my-auto">
+							{isSaving}
+						</button>
+						<Modal
+							id="updateModal"
+							actionName="update"
+							onAction={() => handleSubmit(onEdit())}
+							type="password"
+						/>
+					</div>
 				</div>
 			);
 		}
@@ -63,14 +164,9 @@ function SinglePasswordCard({
 		<form
 			onSubmit={(e) => {
 				e.preventDefault();
-				handleSubmit(onEdit());
 			}}
-			className="text-center py-4 my-4"
-			style={{
-				border: 'rgba(1,1,1) solid 1px',
-				borderRadius: '8px',
-				backgroundColor: 'rgb(191, 191, 181)',
-			}}>
+			className="text-center py-4 my-4 form-style">
+			{renderButton()}
 			<Field
 				readOnlyEdit={readOnly}
 				boolean="true"
@@ -92,7 +188,6 @@ function SinglePasswordCard({
 				component={PasswordCardField}
 				name="password"
 			/>
-			{renderButton()}
 		</form>
 	);
 }

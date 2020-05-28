@@ -12,6 +12,7 @@ function EmptyDashBoard() {
 					<img
 						className="empty-dashboard-logo-size mx-auto"
 						src={passwordLogo}
+						alt="Key Logo"
 					/>
 				</div>
 				<div className="row pt-2 pb-5">
