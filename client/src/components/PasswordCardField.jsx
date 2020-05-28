@@ -85,7 +85,7 @@ const PasswordCardField = ({ input, labelValue, boolean, readOnlyEdit }) => {
 	return (
 		<>
 			<div className="form-group row mx-auto">
-				<label className="col-sm-3 col-form-label text-white">
+				<label className="col-sm-3 col-form-label text-label-card">
 					{labelValue}
 				</label>
 				{renderCondicionalInput()}

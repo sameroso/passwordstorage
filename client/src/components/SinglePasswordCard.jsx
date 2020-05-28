@@ -165,7 +165,7 @@ function SinglePasswordCard({
 			onSubmit={(e) => {
 				e.preventDefault();
 			}}
-			className="text-center py-4 my-4 form-style">
+			className="py-4 my-4 form-style">
 			{renderButton()}
 			<Field
 				readOnlyEdit={readOnly}
