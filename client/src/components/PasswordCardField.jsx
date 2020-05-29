@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import './PasswordCardField.css';
 
-
 import { BsEyeFill } from 'react-icons/bs';
 import { BsEyeSlashFill } from 'react-icons/bs';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -37,47 +36,48 @@ const PasswordCardField = ({ input, labelValue, boolean, readOnlyEdit }) => {
 							onCopy={() => setCopyClipboard(true)}>
 							<small className="copy-span">copy</small>
 						</CopyToClipboard>
-
-						<span
-							className="mx-auto copy-message"
-							style={{ display: `${renderCopy}`, color: 'red' }}>
-							Copied to clipboard
-						</span>
 					</div>
-				</>
-			);
-		} else {
-			return (
-				<div className="col-sm-9 d-flex">
-					<input
-						style={{
-							borderRadius: '7px',
-							width: '85%',
-							border: `${renderBorder()}`,
-						}}
-						readOnly={readOnlyEdit}
-						{...input}
-						type={passwordShowHide}
-						className="form-control-plaintext input-fields text-center"
-					/>
-					<div
-						className="input-group-append eye-container-style"
-						onClick={toggle}>
-						<span className="input-group-text eye-sub-container-style">
-							{passwordEye}
-						</span>
-					</div>
-					<CopyToClipboard
-						text={input.value}
-						onCopy={() => setCopyClipboard(true)}>
-						<small className="copy-span">copy</small>
-					</CopyToClipboard>
 					<span
 						className="mx-auto copy-message"
 						style={{ display: `${renderCopy}`, color: 'red' }}>
 						Copied to clipboard
 					</span>
-				</div>
+				</>
+			);
+		} else {
+			return (
+				<>
+					<div className="col-sm-9 d-flex">
+						<input
+							style={{
+								borderRadius: '7px',
+								width: '85%',
+								border: `${renderBorder()}`,
+							}}
+							readOnly={readOnlyEdit}
+							{...input}
+							type={passwordShowHide}
+							className="form-control-plaintext input-fields text-center"
+						/>
+						<div
+							className="input-group-append eye-container-style"
+							onClick={toggle}>
+							<span className="input-group-text eye-sub-container-style">
+								{passwordEye}
+							</span>
+						</div>
+						<CopyToClipboard
+							text={input.value}
+							onCopy={() => setCopyClipboard(true)}>
+							<small className="copy-span">copy</small>
+						</CopyToClipboard>
+					</div>
+					<span
+						className="mx-auto copy-message"
+						style={{ display: `${renderCopy}`, color: 'red' }}>
+						Copied to clipboard
+					</span>
+				</>
 			);
 		}
 	};

@@ -66,7 +66,7 @@ const useRenderInput = ({
 						{...input}
 						type={passwordShowHide}
 					/>
-					<div className="my-auto" onClick={toggle}>
+					<div className="my-auto ml-2" onClick={toggle}>
 						{passwordEye}
 					</div>
 				</>
