@@ -6,4 +6,5 @@ module.exports = {
 	facebookAppID: process.env.FACEBOOK_APP_ID,
 	facebookClientSecret: process.env.FACEBOOK_CLIENT_SECRET,
 	redirectDomain: process.env.REDIRECT_DOMAIN,
+	cryptographyKey:process.env.CRYPTOGRAPHY_KEY
 };
