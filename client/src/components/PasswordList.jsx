@@ -51,9 +51,9 @@ function PasswordList({ passwordList }) {
 	const findElements = (e) => {
 		const filteredElements = passwordList.filter((el) => {
 			if (
-				el.domain.startsWith(e.target.value) ||
-				el.userName.startsWith(e.target.value) ||
-				el.password.startsWith(e.target.value)
+				el.domain.toLowerCase().startsWith(e.target.value.toLowerCase()) ||
+				el.userName.toLowerCase().startsWith(e.target.value.toLowerCase()) ||
+				el.password.toLowerCase().startsWith(e.target.value.toLowerCase())
 			) {
 				return el;
 			}
