@@ -1,4 +1,4 @@
-# Node.js Starter E-commerce
+# Password Storage
 > Aplicação apresenta um website usando Node.js, Express e MongoDB no backend e ReactJs no frontend, que tem a função de armazenar as senhas dos usuários em um único lugar
 
 <p align="center">
