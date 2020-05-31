@@ -27,9 +27,6 @@ app.use(passport.session());
 authRoutes(app);
 passwordRoutes(app);
 
-app.get('/hey', (req, res) => {
-	res.send('arrombado');
-});
 
 if (process.env.NODE_ENV === 'production') {
 	app.use(express.static('client/build'));
