@@ -1,27 +1,28 @@
 .empty-dashboard-logo-size {
-	height: 80px;
+  max-width: 80vw;
+  max-height: 35vh;
 }
 .bg-empty-dashboard {
-	height: 86.9vh;
-	background-image: linear-gradient(#27bab2, #296599);
+  height: 90vh;
+  background-image: linear-gradient(#27bab2, #266499);
 }
 .btn-start-empty-dashboard {
-	background-color: transparent;
-	border: white 1px solid;
-	color: white;
-	padding: 10px 60px;
-	border-radius: 25px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 10px 60px;
+  border-radius: 40px;
 }
 .btn-start-empty-dashboard:hover {
-	background-color: rgba(40, 50, 105, 0.226);
+  background-color: #266499;
 }
 .btn-logout-empty-dashboard {
-	background-color: transparent;
-	border: white 1px solid;
-	color: white;
-	padding: 10px 60px;
-	border-radius: 25px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 10px 60px;
+  border-radius: 25px;
 }
 .btn-logout-empty-dashboard:hover {
-	background-color: rgba(40, 50, 105, 0.226);
+  background-color: rgba(40, 50, 105, 0.226);
 }

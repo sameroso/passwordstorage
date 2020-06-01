@@ -70,7 +70,7 @@ function PasswordList({ passwordList }) {
 						setSearchInput(e.target.value);
 						findElements(e);
 					}}
-					placeholder="Search for passwords domains or user names"
+					placeholder="Search for passwords, domains or user names"
 				/>
 				<BsSearch className="my-auto text-white"/>
 			</div>

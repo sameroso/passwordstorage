@@ -17,14 +17,14 @@ function LoginPage() {
 							alt="logo"
 						/>
 					</div>
-					<div className="row">
+					<div className="row tittle">
 						<h2 className="mx-auto mb-4 font">
-							Password Storage
+							<strong>Password</strong> Storage
 						</h2>
 					</div>
 					<div className="row">
 						<p className="mx-auto font">
-							Store your password safely	
+							Store your passwords safely	
 						</p>
 					</div>
 					<div className="mt-5">

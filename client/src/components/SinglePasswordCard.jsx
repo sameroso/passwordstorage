@@ -7,7 +7,7 @@ import { editPassword } from '../actions';
 
 import PasswordCardField from './PasswordCardField';
 import './SinglePasswordCard.css';
-import { BsFillTrashFill } from 'react-icons/bs';
+import { BsTrash } from 'react-icons/bs';
 import { MdModeEdit } from 'react-icons/md';
 import { MdCancel } from 'react-icons/md';
 import { MdSave } from 'react-icons/md';
@@ -29,7 +29,7 @@ function SinglePasswordCard({
 
 	const [deleting, setDeleting] = useState(true);
 	const isDeleting = deleting ? (
-		<BsFillTrashFill
+		<BsTrash
 			className="card-icon"
 			size="20px"
 			data-toggle="modal"

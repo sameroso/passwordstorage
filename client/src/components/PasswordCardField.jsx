@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 
 import './PasswordCardField.css';
 
-import { BsEyeFill } from 'react-icons/bs';
-import { BsEyeSlashFill } from 'react-icons/bs';
+import { BsEye } from 'react-icons/bs';
+import { BsEyeSlash } from 'react-icons/bs';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const PasswordCardField = ({ input, labelValue, boolean, readOnlyEdit }) => {
 	const [passwordEyeToggle, setPassswordEyeToggle] = useState(false);
 	const toggle = () => setPassswordEyeToggle(!passwordEyeToggle);
 	const passwordEye = passwordEyeToggle ? (
-		<BsEyeSlashFill className="eye-style" />
+		<BsEyeSlash className="eye-style" />
 	) : (
-		<BsEyeFill className="eye-style" />
+		<BsEye className="eye-style" />
 	);
 	const passwordShowHide = passwordEyeToggle ? 'text' : 'password';
 
@@ -29,18 +29,18 @@ const PasswordCardField = ({ input, labelValue, boolean, readOnlyEdit }) => {
 							readOnly={readOnlyEdit}
 							{...input}
 							type="text"
-							className="form-control-plaintext input-fields text-center"
+							className="form-control-plaintext input-fields text-left text-bold"
 						/>
 						<CopyToClipboard
 							text={input.value}
 							onCopy={() => setCopyClipboard(true)}>
-							<small className="copy-span">copy</small>
+							<small className="copy-span" style={{ color:'white' }}>copy</small>
 						</CopyToClipboard>
 					</div>
 					<span
 						className="mx-auto copy-message"
-						style={{ display: `${renderCopy}`, color: 'red' }}>
-						Copied to clipboard
+						style={{ display: `${renderCopy}`, color: 'white' }}>
+						Copied
 					</span>
 				</>
 			);
@@ -57,7 +57,7 @@ const PasswordCardField = ({ input, labelValue, boolean, readOnlyEdit }) => {
 							readOnly={readOnlyEdit}
 							{...input}
 							type={passwordShowHide}
-							className="form-control-plaintext input-fields text-center"
+							className="form-control-plaintext input-fields text-left"
 						/>
 						<div
 							className="input-group-append eye-container-style"
@@ -69,13 +69,13 @@ const PasswordCardField = ({ input, labelValue, boolean, readOnlyEdit }) => {
 						<CopyToClipboard
 							text={input.value}
 							onCopy={() => setCopyClipboard(true)}>
-							<small className="copy-span">copy</small>
+							<small className="copy-span" style={{ color:'white' }}>copy</small>
 						</CopyToClipboard>
 					</div>
 					<span
 						className="mx-auto copy-message"
-						style={{ display: `${renderCopy}`, color: 'red' }}>
-						Copied to clipboard
+						style={{ display: `${renderCopy}`, color: 'white' }}>
+						Copied
 					</span>
 				</>
 			);

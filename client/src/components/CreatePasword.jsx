@@ -9,8 +9,8 @@ import LoginPage from './LoginPage';
 import Navbar from './Navbar';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import Loader from 'react-loader-spinner';
-import { BsEyeFill } from 'react-icons/bs';
-import { BsEyeSlashFill } from 'react-icons/bs';
+import { BsEye } from 'react-icons/bs';
+import { BsEyeSlash } from 'react-icons/bs';
 import LoadingPage from './LoadingPage';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -26,9 +26,9 @@ const useRenderInput = ({
 	const [passwordEyeToggle, setPassswordEyeToggle] = useState(false);
 	const toggle = () => setPassswordEyeToggle(!passwordEyeToggle);
 	const passwordEye = passwordEyeToggle ? (
-		<BsEyeSlashFill className="eye-icon" size="30px" />
+		<BsEyeSlash className="eye-icon" size="30px" />
 	) : (
-		<BsEyeFill className="eye-icon" size="30px" />
+		<BsEye className="eye-icon" size="30px" />
 	);
 	const passwordShowHide = passwordEyeToggle ? 'text' : 'password';
 
@@ -90,7 +90,7 @@ function CreatePassword({ savePassword, history, auth, handleSubmit }) {
 	const isSaving = passwordSave ? (
 		<Loader type="ThreeDots" color="white" height={20} width={20} />
 	) : (
-		'save'
+		'SAVE'
 	);
 
 	const formSubmit = async (formValues) => {
@@ -133,9 +133,9 @@ function CreatePassword({ savePassword, history, auth, handleSubmit }) {
 			<div>
 				<Navbar />
 				<div className="container">
-					<form className="mx-auto" onSubmit={handleSubmit(formSubmit)}>
+					<form className="mx-auto createpassword" onSubmit={handleSubmit(formSubmit)}>
 						<Field
-							placeholder="Insert the Domain"
+							placeholder="insert the domain"
 							type="text"
 							label="Domain"
 							name="domain"
@@ -144,7 +144,7 @@ function CreatePassword({ savePassword, history, auth, handleSubmit }) {
 							boolean="true"
 						/>
 						<Field
-							placeholder="insert the User Name"
+							placeholder="insert the user name"
 							type="text"
 							label="User Name"
 							name="userName"
@@ -153,7 +153,7 @@ function CreatePassword({ savePassword, history, auth, handleSubmit }) {
 							boolean="true"
 						/>
 						<Field
-							placeholder="insert the Password"
+							placeholder="insert the password"
 							type="text"
 							label="Password"
 							name="password"
@@ -165,7 +165,7 @@ function CreatePassword({ savePassword, history, auth, handleSubmit }) {
 						<div className="row justify-content-around">
 							<Link to="/">
 								<button type="button" className="back-btn">
-									back
+									BACK
 								</button>
 							</Link>
 							<button type="submit" className="save-btn">

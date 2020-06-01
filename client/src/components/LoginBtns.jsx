@@ -13,9 +13,7 @@ function LoginBtns() {
 							<button className="fb-btn">
 								<div className="d-flex">
 									<img className="btn-img-size" src={fbLogo} alt=""></img>
-									<h5 className="my-auto text-white ml-2">
-										Login with Facebook
-									</h5>
+									<h6 className="my-auto text-white ml-2">Login with Facebook</h6>
 								</div>
 							</button>
 						</a>
@@ -27,7 +25,7 @@ function LoginBtns() {
 							<button className="google-btn">
 								<div className="d-flex">
 									<img className="btn-img-size" src={googleLogo} alt=""></img>
-									<h5 className="my-auto text-white ml-3">Login with Google</h5>
+									<h6 className="my-auto text-white ml-2">Login with Google</h6>
 								</div>
 							</button>
 						</a>

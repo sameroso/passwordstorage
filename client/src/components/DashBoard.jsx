@@ -19,7 +19,7 @@ function DashBoard({ passwordList }) {
 					<div className="container">
 						<div className="row pt-3">
 							<Link to="/new" className="mx-auto">
-								<button className="add-button-style">Add New Password</button>
+								<button className="add-button-style">ADD NEW PASSWORD</button>
 							</Link>
 						</div>
 					</div>
