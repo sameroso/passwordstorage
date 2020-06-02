@@ -15,7 +15,7 @@ function DashBoard({ passwordList }) {
 			);
 		} else {
 			return (
-				<>
+				<div className="bg-dashboard">
 					<div className="container">
 						<div className="row pt-3">
 							<Link to="/new" className="mx-auto">
@@ -27,7 +27,7 @@ function DashBoard({ passwordList }) {
 					<div>
 						<PasswordList />
 					</div>
-				</>
+				</div>
 			);
 		}
 	};

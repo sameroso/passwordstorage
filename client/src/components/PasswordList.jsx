@@ -6,7 +6,7 @@ import './PasswordList.css';
 import { BsSearch } from 'react-icons/bs';
 
 function PasswordList({ passwordList }) {
-	let renderList = () => {
+	const renderList = () => {
 		if (searchInput.length !== 0) {
 			return filteredList.map((el) => {
 				return (
@@ -30,6 +30,7 @@ function PasswordList({ passwordList }) {
 			return (
 				<div className="col-md-6" key={el._id}>
 					<SinglePasswordCard
+						key={el._id}
 						_id={el._id}
 						form={`${el._id}`}
 						initialValues={{
