@@ -12,8 +12,8 @@ export const savePassword = (formValues,history) => async (dispatch) => {
     dispatch({type:"FETCH_USER", payload:response.data})
 
 }
-export const deletePassword = (id) => async (dispatch) => {
-    const response = await axios.post('/api/deletepassword', id);
+export const deletePassword = (_id) => async (dispatch) => {
+    const response = await axios.post('/api/deletepassword', _id);
     dispatch({type:"FETCH_USER", payload:response.data})
 
 }

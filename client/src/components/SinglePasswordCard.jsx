@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { reduxForm, Field} from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 
 import { deletePassword } from '../actions';
@@ -33,22 +33,22 @@ function SinglePasswordCard({
 			className="card-icon"
 			size="20px"
 			data-toggle="modal"
-			data-target="#deleteModal"
+			data-target={`#${_id}`}
 		/>
 	) : (
-		<Loader type="ThreeDots" color="white" height={20} width={20} />
-	);
+			<Loader type="ThreeDots" color="white" height={20} width={20} />
+		);
 	const [saving, setSaving] = useState(true);
 	const isSaving = saving ? (
 		<MdSave
 			className="card-icon"
 			size="20px"
 			data-toggle="modal"
-			data-target="#updateModal"
+			data-target={`#${_id}`}
 		/>
 	) : (
-		<Loader type="ThreeDots" color="white" height={20} width={20} />
-	);
+			<Loader type="ThreeDots" color="white" height={20} width={20} />
+		);
 
 	const onEdit = async () => {
 		try {
@@ -124,9 +124,9 @@ function SinglePasswordCard({
 							{isDeleting}
 						</button>
 						<Modal
-							id="deleteModal"
+							id={_id}
 							actionName="delete"
-							onAction={onDeletePassword}
+							onAction={() => handleSubmit(onDeletePassword())}
 							btnType="button"
 							type="password"
 						/>
@@ -150,7 +150,7 @@ function SinglePasswordCard({
 							{isSaving}
 						</button>
 						<Modal
-							id="updateModal"
+							id={_id}
 							actionName="update"
 							onAction={() => handleSubmit(onEdit())}
 							type="password"
@@ -197,6 +197,7 @@ const SinglePasswordForm = reduxForm({ enableReinitialize: true })(
 );
 
 const mapStateToProps = (state, ownProps) => {
+	console.log(state);
 	return { formData: state.form[ownProps._id] };
 };
 

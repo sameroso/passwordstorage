@@ -6,16 +6,14 @@ import './PasswordList.css';
 import { BsSearch } from 'react-icons/bs';
 
 function PasswordList({ passwordList }) {
-	const renderList = () => {
+	let renderList = () => {
 		if (searchInput.length !== 0) {
 			return filteredList.map((el) => {
 				return (
-					<div className="col-md-6" key={`${el._id}`}>
+					<div className="col-md-6" key={el._id}>
 						<SinglePasswordCard
+							key={el._id}
 							_id={el._id}
-							domain={el.domain}
-							userName={el.userName}
-							password={el.password}
 							form={`${el._id}`}
 							initialValues={{
 								domain: el.domain,
@@ -28,13 +26,11 @@ function PasswordList({ passwordList }) {
 			});
 		}
 		return passwordList.map((el) => {
+			console.log(el._id)
 			return (
-				<div className="col-md-6" key={`${el._id}`}>
+				<div className="col-md-6" key={el._id}>
 					<SinglePasswordCard
 						_id={el._id}
-						domain={el.domain}
-						userName={el.userName}
-						password={el.password}
 						form={`${el._id}`}
 						initialValues={{
 							domain: el.domain,
@@ -72,7 +68,7 @@ function PasswordList({ passwordList }) {
 					}}
 					placeholder="Search for passwords, domains or user names"
 				/>
-				<BsSearch className="my-auto text-white"/>
+				<BsSearch className="my-auto text-white" />
 			</div>
 			<div className="row">{renderList()}</div>
 		</div>
