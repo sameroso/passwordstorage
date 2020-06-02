@@ -1,16 +1,21 @@
-.bg-login{
-    background-image: linear-gradient(#27bab2, #296599);
+.bg-login {
+  background-image: linear-gradient(#27bab2, #296599);
 }
-.size{
-    height: 100vh;
+.size {
+  height: 100vh;
 }
-.logo-size{
-    height: 140px;
-    margin-bottom: 5px;
+.logo-size {
+  height: 80px;
+  margin-bottom: 5px;
 }
-.font{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    color: white;
-    text-align: center;
+.tittle {
+  margin: auto;
+}
+.tittle h2 {
+  font-size: 45px;
+}
+.font {
+  font-family: 'Montserrat Alternates', sans-serif;
+  color: white;
+  text-align: center;
 }

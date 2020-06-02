@@ -1,36 +1,32 @@
-.modal-body-style{
-    background-color: rgba(45, 152, 160, 0.336);
+.modal-body-style {
+  background-color: rgba(36, 159, 173, 0.336);
 }
-.modal-bg-config{
-    background-color: rgba(16, 68, 104, 0.795);
-    border-radius: 20px;
-    border: rgba(255, 255, 255, 0.363) 1px solid;
+.modal-bg-config {
+  background-color: rgb(36, 159, 173);
+  border-radius: 30px;
+  border: none;
 }
-.close-btn-style{
-    color: white;
-    border-radius: 7px;
-    background-color: teal;
-    border: none;
-    padding: 6px 15px;
+.close-btn-style {
+  color: white;
+  border-radius: 30px;
+  background-color:#268499;
+  border: none;
+  padding: 6px 15px;
 }
-.close-btn-style:hover{
-    color: white;
-    border-radius: 7px;
-    background-color: rgba(38, 150, 150, 0.562);
-    border: none;
-    padding: 6px 15px;
+.close-btn-style:hover {
+  background-color: rgba(51, 131, 180, 0.562);
 }
-.action-btn-style{
-    color: white;
-    border-radius: 7px;
-    background-color: rgb(134, 4, 4);
-    border: none;
-    padding: 6px 15px;
+.action-btn-style {
+  text-transform: uppercase;
+  color: white;
+  border-radius: 30px;
+  background-color: #ef6b3f;
+  border: none;
+  padding: 6px 15px;
 }
-.action-btn-style:hover{
-    color: white;
-    border-radius: 7px;
-    background-color: rgba(228, 62, 62, 0.562);
-    border: none;
-    padding: 6px 15px;
+.action-btn-style:hover {
+  background-color: rgba(239, 107, 62, 0.562);
+}
+.modal-title {
+    text-transform: uppercase;
 }

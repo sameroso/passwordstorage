@@ -1,28 +1,29 @@
-#root,html{
-   background-color:#23849c;
+#root,
+html {
+  background-image: linear-gradient(#27bab2, #296599);
 }
 
-.fb-btn{
-    padding:6px 6px;
-    border-radius: 15px;
-    border:transparent;
-    background-color: transparent;
+.fb-btn {
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 30px;
 }
 
-.fb-btn:hover{
-    background-color: rgb(62, 96, 190);
+.fb-btn:hover {
+  background-color: rgb(62, 96, 190);
 }
 
-.google-btn{
-    padding:10px 15px;
-    background-color: transparent;
-    border-radius: 15px;
-    border: transparent;
+.google-btn {
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 30px;
 }
-.google-btn:hover{
-    background-color: rgba(235, 104, 29, 0.596);
+.google-btn:hover {
+  background-color: rgb(234, 67, 53);
 }
 
-.btn-img-size{
-    height: 30px;
+.btn-img-size {
+  height: 30px;
 }

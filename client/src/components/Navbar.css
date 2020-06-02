@@ -1,32 +1,38 @@
-.config-image{
-    height: 45px;
-    width: 45px;
+.config-image {
+  height: 40px;
 }
-.font-header{
-    font-family: 'Squada One', cursive;
-    color: white;
+.font-header {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 18px;
+  color: white;
 }
-.background{
-    background-color: #4397ac80;
+.background {
+  background-color: #26aab2;
+  height: 10vh;
 }
-.profile-pic{
-    height: 50px;
-    width: 50px;
-    border-radius: 60px;
+.profile-pic {
+  height: 40px;
+  width: 40px;
+  border-radius: 60px;
 }
-.dropdown-config{
-    background-color: transparent;
-    border: transparent;
-    height: 50px;
+.dropdown-config {
+  background-color: transparent;
+  border: transparent;
+  height: 50px;
 }
-.logout-link{
-    text-decoration: none;
-    color: black;
+.logout-link {
+  text-decoration: none;
+  color: black;
 }
-.logout-link:hover{
-    text-decoration: none;
-    color: black;
+.logout-link:hover {
+  text-decoration: none;
+  color:#268499;
 }
 .dropdown-toggle::after {
-    display: none;
+  display: none;
+}
+
+.dropdown-menu {
+  background-color: rgba(36, 159, 173, 0.336);
+  margin-right: 10px;
 }

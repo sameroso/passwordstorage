@@ -24,13 +24,13 @@ function Modal({ id, actionName,onAction,btnType,type }) {
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div className="modal-body text-white">Are You Sure You want to {actionName} this {type}?</div>
+					<div className="modal-body text-white">Are you sure you want to <strong>{actionName}</strong> this {type}?</div>
 					<div className="modal-footer">
 						<button
 							type="button"
 							className="close-btn-style"
 							data-dismiss="modal">
-							Close
+							CLOSE
 						</button>
 						<button type={btnType} className="action-btn-style" onClick={onAction} data-dismiss="modal">
 							{actionName}

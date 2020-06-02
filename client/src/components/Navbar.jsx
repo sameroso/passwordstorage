@@ -30,7 +30,7 @@ function Navbar({ auth, deleteAccount }) {
 									alt=""
 								/>
 								<p className="text-white mb-0 my-auto">
-									{auth.profileName} &#8609;
+									{auth.profileName} &#9660;
 								</p>
 							</div>
 						</button>
@@ -74,7 +74,7 @@ function Navbar({ auth, deleteAccount }) {
 								src={passwordLogo}
 								alt="Logo"></img>
 							<h5 className="ml-2 font-header my-auto">
-								Password
+								<strong>Password</strong>
 								<br />
 								Storage
 							</h5>
