@@ -5,10 +5,14 @@
   border: none;
   border-radius: 30px;
   margin: 0 10px;
+  cursor: pointer;
+}
+.add-button-style:focus {
+  outline: none;
 }
 .add-button-style:hover {
   font-weight: bold;
 }
-.bg-dashboard{
+.bg-dashboard {
   background-color: #27bab3;
 }

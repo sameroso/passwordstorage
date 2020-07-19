@@ -19,14 +19,19 @@
   background-color: transparent;
   border: transparent;
   height: 50px;
+  cursor: pointer;
 }
+.dropdown-config:focus {
+  outline: none;
+}
+
 .logout-link {
   text-decoration: none;
   color: black;
 }
 .logout-link:hover {
   text-decoration: none;
-  color:#268499;
+  color: #268499;
 }
 .dropdown-toggle::after {
   display: none;
@@ -35,4 +40,8 @@
 .dropdown-menu {
   background-color: rgba(36, 159, 173, 0.336);
   margin-right: 10px;
+}
+
+.dropdown-item:focus {
+  outline: none;
 }

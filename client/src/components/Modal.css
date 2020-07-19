@@ -9,9 +9,13 @@
 .close-btn-style {
   color: white;
   border-radius: 30px;
-  background-color:#268499;
+  background-color: #268499;
   border: none;
   padding: 6px 15px;
+  cursor: pointer;
+}
+.close-btn-style:focus {
+  outline: none;
 }
 .close-btn-style:hover {
   background-color: rgba(51, 131, 180, 0.562);
@@ -23,10 +27,14 @@
   background-color: #ef6b3f;
   border: none;
   padding: 6px 15px;
+  cursor: pointer;
+}
+.action-btn-style:focus {
+  outline: none;
 }
 .action-btn-style:hover {
   background-color: rgba(239, 107, 62, 0.562);
 }
 .modal-title {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
