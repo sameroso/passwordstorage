@@ -40,3 +40,7 @@ Samer Rola é um desenvolvedor front-end residente em Belo Horizonte, MG. Links 
 
 * samerkkr@gmail.com
 * [linkedin.com/samer-rola-frontend/](https://www.linkedin.com/in/samer-rola-frontend/)
+
+O design foi feito por Maria Clara Pagotto.
+
+*[linkedin.com/mclarapagotto/](https://www.linkedin.com/in/mclarapagotto/)
