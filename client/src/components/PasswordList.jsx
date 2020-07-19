@@ -16,6 +16,7 @@ function PasswordList({ passwordList }) {
               _id={el._id}
               form={`${el._id}`}
               initialValues={{
+                title: el.title,
                 domain: el.domain,
                 userName: el.userName,
                 password: el.password,
@@ -34,6 +35,7 @@ function PasswordList({ passwordList }) {
             _id={el._id}
             form={`${el._id}`}
             initialValues={{
+              title: el.title,
               domain: el.domain,
               userName: el.userName,
               password: el.password,
@@ -50,7 +52,8 @@ function PasswordList({ passwordList }) {
       if (
         el.domain.toLowerCase().includes(e.target.value.toLowerCase()) ||
         el.userName.toLowerCase().includes(e.target.value.toLowerCase()) ||
-        el.password.toLowerCase().includes(e.target.value.toLowerCase())
+        el.password.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        el.title.toLowerCase().includes(e.target.value.toLowerCase())
       ) {
         return el;
       }

@@ -16,192 +16,207 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const useRenderInput = ({
-	placeholder,
-	input,
-	id,
-	label,
-	boolean,
-	meta: { touched, error },
+  placeholder,
+  input,
+  id,
+  label,
+  boolean,
+  meta: { touched, error },
 }) => {
-	const [passwordEyeToggle, setPassswordEyeToggle] = useState(false);
-	const toggle = () => setPassswordEyeToggle(!passwordEyeToggle);
-	const passwordEye = passwordEyeToggle ? (
-		<BsEyeSlash className="eye-icon" size="30px" />
-	) : (
-		<BsEye className="eye-icon" size="30px" />
-	);
-	const passwordShowHide = passwordEyeToggle ? 'text' : 'password';
+  const [passwordEyeToggle, setPassswordEyeToggle] = useState(false);
+  const toggle = () => setPassswordEyeToggle(!passwordEyeToggle);
+  const passwordEye = passwordEyeToggle ? (
+    <BsEyeSlash className="eye-icon" size="30px" />
+  ) : (
+    <BsEye className="eye-icon" size="30px" />
+  );
+  const passwordShowHide = passwordEyeToggle ? 'text' : 'password';
 
-	const renderError = (touched, error) => {
-		if (touched && error) {
-			return (
-				<small className="form-text" style={{ color: 'red' }}>
-					{error}
-				</small>
-			);
-		} else {
-			return null;
-		}
-	};
+  const renderError = (touched, error) => {
+    if (touched && error) {
+      return (
+        <small className="form-text" style={{ color: 'red' }}>
+          {error}
+        </small>
+      );
+    } else {
+      return null;
+    }
+  };
 
-	const renderCondicional = () => {
-		if (boolean === 'true') {
-			return (
-				<input
-					autoComplete="on"
-					placeholder={placeholder}
-					className="form-control input-create"
-					id={id}
-					{...input}
-				/>
-			);
-		} else {
-			return (
-				<>
-					<input
-						autoComplete="on"
-						placeholder={placeholder}
-						className="form-control input-create input-create-password"
-						id={id}
-						{...input}
-						type={passwordShowHide}
-					/>
-					<div className="my-auto ml-2" onClick={toggle}>
-						{passwordEye}
-					</div>
-				</>
-			);
-		}
-	};
-	return (
-		<div className="form-group">
-			<label htmlFor={id} className="col-form-label text-white">
-				{label}
-			</label>
-			<div className="d-flex">{renderCondicional()}</div>
+  const renderCondicional = () => {
+    if (boolean === 'true') {
+      return (
+        <input
+          autoComplete="on"
+          placeholder={placeholder}
+          className="form-control input-create"
+          id={id}
+          {...input}
+        />
+      );
+    } else {
+      return (
+        <>
+          <input
+            autoComplete="on"
+            placeholder={placeholder}
+            className="form-control input-create input-create-password"
+            id={id}
+            {...input}
+            type={passwordShowHide}
+          />
+          <div className="my-auto ml-2" onClick={toggle}>
+            {passwordEye}
+          </div>
+        </>
+      );
+    }
+  };
+  return (
+    <div className="form-group">
+      <label htmlFor={id} className="col-form-label text-white">
+        {label}
+      </label>
+      <div className="d-flex">{renderCondicional()}</div>
 
-			{renderError(touched, error)}
-		</div>
-	);
+      {renderError(touched, error)}
+    </div>
+  );
 };
 
 function CreatePassword({ savePassword, history, auth, handleSubmit }) {
-	const [passwordSave, setPasswordSave] = useState(false);
-	const isSaving = passwordSave ? (
-		<Loader type="ThreeDots" color="white" height={20} width={20} />
-	) : (
-		'SAVE'
-	);
+  const [passwordSave, setPasswordSave] = useState(false);
+  const isSaving = passwordSave ? (
+    <Loader type="ThreeDots" color="white" height={20} width={20} />
+  ) : (
+    'SAVE'
+  );
 
-	const formSubmit = async (formValues) => {
-		setPasswordSave(true);
-		try {
-			await savePassword(formValues, history);
-			await toast.info('Password Saved with success', {
-				position: 'top-right',
-				autoClose: 3000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-			});
-		} catch {
-			toast.error('An error Ocurred, Please try later', {
-				position: 'top-right',
-				autoClose: 5000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-			});
-			setPasswordSave(false);
-		}
-	};
+  const formSubmit = async (formValues) => {
+    setPasswordSave(true);
+    try {
+      await savePassword(formValues, history);
+      await toast.info('Password Saved with success', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } catch {
+      toast.error('An error Ocurred, Please try later', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setPasswordSave(false);
+    }
+  };
 
-	if (auth === null) {
-		return (
-			<div>
-				<LoadingPage />
-			</div>
-		);
-	} else if (auth === false) {
-		return <LoginPage />;
-	} else {
-		return (
-			<div>
-				<Navbar />
-				<div className="container">
-					<form className="mx-auto createpassword" onSubmit={handleSubmit(formSubmit)}>
-						<Field
-							placeholder="insert the domain"
-							type="text"
-							label="Domain"
-							name="domain"
-							id="domain"
-							component={useRenderInput}
-							boolean="true"
-						/>
-						<Field
-							placeholder="insert the user name"
-							type="text"
-							label="User Name"
-							name="userName"
-							id="userName"
-							component={useRenderInput}
-							boolean="true"
-						/>
-						<Field
-							placeholder="insert the password"
-							type="text"
-							label="Password"
-							name="password"
-							id="password"
-							component={useRenderInput}
-							boolean="false"
-						/>
+  if (auth === null) {
+    return (
+      <div>
+        <LoadingPage />
+      </div>
+    );
+  } else if (auth === false) {
+    return <LoginPage />;
+  } else {
+    return (
+      <div>
+        <Navbar />
+        <div className="container">
+          <form
+            className="mx-auto createpassword"
+            onSubmit={handleSubmit(formSubmit)}
+          >
+            <Field
+              placeholder="insert title"
+              type="text"
+              label="Title"
+              name="title"
+              id="title"
+              component={useRenderInput}
+              boolean="true"
+            />
+            <Field
+              placeholder="insert the domain"
+              type="text"
+              label="Domain"
+              name="domain"
+              id="domain"
+              component={useRenderInput}
+              boolean="true"
+            />
+            <Field
+              placeholder="insert the user name"
+              type="text"
+              label="User Name"
+              name="userName"
+              id="userName"
+              component={useRenderInput}
+              boolean="true"
+            />
+            <Field
+              placeholder="insert the password"
+              type="text"
+              label="Password"
+              name="password"
+              id="password"
+              component={useRenderInput}
+              boolean="false"
+            />
 
-						<div className="row justify-content-around">
-							<Link to="/">
-								<button type="button" className="back-btn">
-									BACK
-								</button>
-							</Link>
-							<button type="submit" className="save-btn">
-								{isSaving}
-							</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		);
-	}
+            <div className="row justify-content-around">
+              <Link to="/">
+                <button type="button" className="back-btn">
+                  BACK
+                </button>
+              </Link>
+              <button type="submit" className="save-btn">
+                {isSaving}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = (state) => {
-	return { auth: state.auth };
+  return { auth: state.auth };
 };
 function validate(values) {
-	const errors = {};
-	if (!values.domain) {
-		errors.domain = 'You must provide a domain';
-	}
-	if (!values.userName) {
-		errors.userName = 'You must provide a user name';
-	}
-	if (!values.password) {
-		errors.password = 'You must provide a password';
-	}
+  const errors = {};
+  if (!values.title) {
+    errors.title = 'You must provide a title';
+  }
+  if (!values.domain) {
+    errors.domain = 'You must provide a domain';
+  }
+  if (!values.userName) {
+    errors.userName = 'You must provide a user name';
+  }
+  if (!values.password) {
+    errors.password = 'You must provide a password';
+  }
 
-	return errors;
+  return errors;
 }
 
 const createPasswordForm = reduxForm({
-	form: 'createPassword',
-	validate,
+  form: 'createPassword',
+  validate,
 })(CreatePassword);
 
 export default connect(mapStateToProps, { savePassword })(
-	withRouter(createPasswordForm)
+  withRouter(createPasswordForm)
 );
