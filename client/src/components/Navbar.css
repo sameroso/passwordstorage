@@ -45,3 +45,6 @@
 .dropdown-item:focus {
   outline: none;
 }
+.link-logo:hover {
+  text-decoration: none;
+}
