@@ -13,13 +13,14 @@ function AboutUs() {
         <div className="page-height">
           <div className="text-config mb-1">
             Password Storage was designed to store your passwords safely on
-            internet.Its a simple and lightweight pwa that stores all passwords
-            that you want.
+            internet.Its a simple and lightweight single page application that
+            stores all passwords that you want.
           </div>
           <div className="text-config mb-1">
-            Due to all the sugested password that internet offers and intendend
-            to avoid you repeating the same password all around Password Storage
-            is a great option to centralize it.
+            Due to all passwords needed in the internet, Password Storage is
+            great for you. You do not have to repeat the same password all
+            around internet anymore. Centralize all your passwords here and do
+            not worry anymore!!
           </div>
           <div className="text-config mb-1">
             It is safe to store your password here because we encrypted all
