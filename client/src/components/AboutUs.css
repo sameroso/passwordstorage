@@ -1,0 +1,21 @@
+.text-config {
+  color: white;
+  font-weight: 400;
+  font-size: 19px;
+  text-align: center;
+}
+.devPic-config {
+  height: 100px;
+  border-radius: 100px;
+}
+.link-config {
+  text-decoration: none;
+  color: white;
+}
+.link-config:hover {
+  text-decoration: none;
+  color: rgb(44, 76, 124);
+}
+.linkedin-config {
+  height: 200px;
+}

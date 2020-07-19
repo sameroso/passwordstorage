@@ -6,36 +6,36 @@ import { connect } from 'react-redux';
 import './DashBoard.css';
 
 function DashBoard({ passwordList }) {
-	const renderDashBoard = () => {
-		if (passwordList.length === 0) {
-			return (
-				<>
-					<EmptyDashBoard />
-				</>
-			);
-		} else {
-			return (
-				<div className="bg-dashboard">
-					<div className="container">
-						<div className="row pt-3">
-							<Link to="/new" className="mx-auto">
-								<button className="add-button-style">ADD NEW PASSWORD</button>
-							</Link>
-						</div>
-					</div>
+  const renderDashBoard = () => {
+    if (passwordList.length === 0) {
+      return (
+        <>
+          <EmptyDashBoard />
+        </>
+      );
+    } else {
+      return (
+        <div className="bg-dashboard">
+          <div className="container">
+            <div className="row pt-3">
+              <Link to="/new" className="mx-auto">
+                <button className="add-button-style">ADD NEW PASSWORD</button>
+              </Link>
+            </div>
+          </div>
 
-					<div>
-						<PasswordList />
-					</div>
-				</div>
-			);
-		}
-	};
-	return <>{renderDashBoard()}</>;
+          <div>
+            <PasswordList />
+          </div>
+        </div>
+      );
+    }
+  };
+  return <>{renderDashBoard()}</>;
 }
 
 const mapStateToProps = (state) => {
-	return { passwordList: state.auth.passwordList };
+  return { passwordList: state.auth.passwordList };
 };
 
 export default connect(mapStateToProps)(DashBoard);

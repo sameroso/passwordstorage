@@ -171,7 +171,7 @@ function SinglePasswordCard({
       className="my-4 form-style"
     >
       <div className="d-flex bg-card-title pt-3 border-top-title mb-2">
-        <div className="col-9">
+        <div className="col-6 col-sm-9 col-md-6 col-lg-8">
           <Field
             readOnlyEdit={readOnly}
             boolean="true"
@@ -179,7 +179,7 @@ function SinglePasswordCard({
             name="title"
           />
         </div>
-        <div className="col-3">{renderButton()}</div>
+        <div className="col-6 col-sm-3 col-md-6 col-lg-4">{renderButton()}</div>
       </div>
       <Field
         readOnlyEdit={readOnly}

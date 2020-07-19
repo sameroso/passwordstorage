@@ -8,6 +8,10 @@ html {
   background-color: transparent;
   border: 1px solid white;
   border-radius: 30px;
+  cursor: pointer;
+}
+.fb-btn:focus {
+  outline: none;
 }
 
 .fb-btn:hover {
@@ -19,6 +23,10 @@ html {
   background-color: transparent;
   border: 1px solid white;
   border-radius: 30px;
+  cursor: pointer;
+}
+.google-btn:focus {
+  outline: none;
 }
 .google-btn:hover {
   background-color: rgb(234, 67, 53);

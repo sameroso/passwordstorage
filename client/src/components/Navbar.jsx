@@ -36,9 +36,11 @@ function Navbar({ auth, deleteAccount }) {
               </div>
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenu">
-              <button className="dropdown-item" type="button">
-                About Us
-              </button>
+              <Link to="/aboutus">
+                <button className="dropdown-item" type="button">
+                  About Us
+                </button>
+              </Link>
               <button
                 className="dropdown-item"
                 type="button"
