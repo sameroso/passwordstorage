@@ -5,10 +5,10 @@ import designPic from '../clara.png';
 import { FaLinkedinIn } from 'react-icons/fa';
 import { FaGithub } from 'react-icons/fa';
 import './AboutUs.css';
-function AboutUs() {
+function AboutUs({ match }) {
   return (
     <>
-      <NavBar />
+      <NavBar path={match.path} />
       <div className="container">
         <div className="page-height">
           <div className="text-config mb-1">

@@ -85,7 +85,7 @@ const useRenderInput = ({
   );
 };
 
-function CreatePassword({ savePassword, history, auth, handleSubmit }) {
+function CreatePassword({ savePassword, history, auth, handleSubmit, match }) {
   const [passwordSave, setPasswordSave] = useState(false);
   const isSaving = passwordSave ? (
     <Loader type="ThreeDots" color="white" height={20} width={20} />
@@ -131,7 +131,7 @@ function CreatePassword({ savePassword, history, auth, handleSubmit }) {
   } else {
     return (
       <div>
-        <Navbar />
+        <Navbar path={match.path} />
         <div className="container">
           <form
             className="mx-auto createpassword"

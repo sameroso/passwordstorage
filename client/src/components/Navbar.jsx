@@ -7,7 +7,22 @@ import Modal from './Modal';
 import { deleteAccount } from '../actions';
 import { BsPlus } from 'react-icons/bs';
 
-function Navbar({ auth, deleteAccount }) {
+function Navbar({ auth, deleteAccount, path }) {
+  function renderAddBtn() {
+    if (path !== '/') {
+      return null;
+    } else {
+      return (
+        <div className="add-btn-config">
+          <div className="row pt-2">
+            <Link to="/new" className="mx-auto">
+              <BsPlus className="add-button-style" size="40px" color="white" />
+            </Link>
+          </div>
+        </div>
+      );
+    }
+  }
   const renderProfile = () => {
     if (auth === false) {
       return null;
@@ -16,17 +31,7 @@ function Navbar({ auth, deleteAccount }) {
     } else {
       return (
         <div className="d-flex">
-          <div className="add-btn-config">
-            <div className="row pt-2">
-              <Link to="/new" className="mx-auto">
-                <BsPlus
-                  className="add-button-style"
-                  size="40px"
-                  color="white"
-                />
-              </Link>
-            </div>
-          </div>
+          {renderAddBtn()}
           <div className="dropdown my-auto">
             <button
               className="dropdown-config dropdown-toggle"

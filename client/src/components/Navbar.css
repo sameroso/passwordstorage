@@ -71,6 +71,11 @@
     margin-right: 630px;
   }
 }
+@media (min-width: 1200px) {
+  .add-btn-config {
+    margin-right: 780px;
+  }
+}
 @media (min-width: 1439px) {
   .add-btn-config {
     margin-right: 800px;
