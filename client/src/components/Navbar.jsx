@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Modal from './Modal';
 import { deleteAccount } from '../actions';
+import { BsPlus } from 'react-icons/bs';
 
 function Navbar({ auth, deleteAccount }) {
   const renderProfile = () => {
@@ -14,7 +15,18 @@ function Navbar({ auth, deleteAccount }) {
       return null;
     } else {
       return (
-        <div className="d-flex mr-4">
+        <div className="d-flex">
+          <div className="add-btn-config">
+            <div className="row pt-2">
+              <Link to="/new" className="mx-auto">
+                <BsPlus
+                  className="add-button-style"
+                  size="40px"
+                  color="white"
+                />
+              </Link>
+            </div>
+          </div>
           <div className="dropdown my-auto">
             <button
               className="dropdown-config dropdown-toggle"

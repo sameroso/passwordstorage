@@ -10,7 +10,7 @@ function PasswordList({ passwordList }) {
     if (searchInput.length !== 0) {
       return filteredList.map((el) => {
         return (
-          <div className="col-md-6" key={el._id}>
+          <div className="col-md-6 col-lg-4" key={el._id}>
             <SinglePasswordCard
               key={el._id}
               _id={el._id}
@@ -29,7 +29,7 @@ function PasswordList({ passwordList }) {
     return passwordList.map((el) => {
       console.log(el._id);
       return (
-        <div className="col-md-6" key={el._id}>
+        <div className="col-md-6 col-lg-4" key={el._id}>
           <SinglePasswordCard
             key={el._id}
             _id={el._id}
@@ -70,7 +70,7 @@ function PasswordList({ passwordList }) {
             setSearchInput(e.target.value);
             findElements(e);
           }}
-          placeholder="Search for passwords, domains or user names"
+          placeholder="Search for passwords, domains, titles or user names"
         />
         <BsSearch className="my-auto text-white" />
       </div>

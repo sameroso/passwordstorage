@@ -48,3 +48,39 @@
 .link-logo:hover {
   text-decoration: none;
 }
+.add-button-style {
+  background-color: #20a86f;
+  border: none;
+  border-radius: 30px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.add-button-style:focus {
+  outline: none;
+}
+.add-button-style:hover {
+  font-weight: bold;
+}
+@media (min-width: 770px) {
+  .add-btn-config {
+    margin-right: 380px;
+  }
+}
+@media (min-width: 1000px) {
+  .add-btn-config {
+    margin-right: 630px;
+  }
+}
+@media (min-width: 1439px) {
+  .add-btn-config {
+    margin-right: 800px;
+  }
+}
+@media (max-width: 770px) {
+  .add-btn-config {
+    z-index: 1000;
+    position: fixed;
+    top: 85%;
+    left: 85%;
+  }
+}

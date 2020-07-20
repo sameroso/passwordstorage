@@ -14,11 +14,13 @@ const PasswordCardFieldTitle = ({ input, boolean, readOnlyEdit }) => {
                 borderRadius: '7px',
                 border: `${renderBorder()}`,
                 height: '28px',
+                backgroundColor: 'transparent',
+                color: 'white',
               }}
               readOnly={readOnlyEdit}
               {...input}
               type="text"
-              className="form-control-plaintext input-fields text-center text-bold mx-auto text-title"
+              className="form-control-plaintext text-center text-bold mx-auto text-title"
             />
           </div>
         </>
