@@ -211,7 +211,6 @@ const SinglePasswordForm = reduxForm({ enableReinitialize: true })(
 );
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state);
   return { formData: state.form[ownProps._id] };
 };
 

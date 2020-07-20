@@ -9,7 +9,7 @@ import { BsPlus } from 'react-icons/bs';
 
 function Navbar({ auth, deleteAccount, path }) {
   function renderAddBtn() {
-    if (path !== '/') {
+    if (path !== '/' || auth.passwordList.length === 0) {
       return null;
     } else {
       return (
