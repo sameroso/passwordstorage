@@ -113,7 +113,7 @@ function SinglePasswordCard({
   const renderButton = () => {
     if (readOnly) {
       return (
-        <div className="container">
+        <div>
           <div className="row justify-content-end mb-2">
             <button
               className="card-btn mr-3 my-auto"
@@ -137,7 +137,7 @@ function SinglePasswordCard({
       );
     } else {
       return (
-        <div className="container">
+        <div>
           <div className="row justify-content-end">
             <button
               type="button"
@@ -171,7 +171,7 @@ function SinglePasswordCard({
       className="my-4 form-style"
     >
       <div className="d-flex bg-card-title pt-3 border-top-title mb-2">
-        <div className="col-6 col-sm-9 col-md-6 col-lg-8">
+        <div className="col-8 col-sm-9 col-md-8 col-lg-8">
           <Field
             readOnlyEdit={readOnly}
             boolean="true"
@@ -179,7 +179,7 @@ function SinglePasswordCard({
             name="title"
           />
         </div>
-        <div className="col-6 col-sm-3 col-md-6 col-lg-4">{renderButton()}</div>
+        <div className="col-4 col-sm-3 col-md-4 col-lg-4">{renderButton()}</div>
       </div>
       <Field
         readOnlyEdit={readOnly}
