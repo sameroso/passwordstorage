@@ -12,9 +12,13 @@
   color: white;
   padding: 10px 60px;
   border-radius: 40px;
+  cursor: pointer;
 }
 .btn-start-empty-dashboard:hover {
   background-color: #266499;
+}
+.btn-start-empty-dashboard:focus {
+  outline: none;
 }
 .btn-logout-empty-dashboard {
   background-color: transparent;

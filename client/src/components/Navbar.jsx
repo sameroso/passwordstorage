@@ -16,7 +16,7 @@ function Navbar({ auth, deleteAccount, path }) {
         <div className="add-btn-config">
           <div className="row pt-2">
             <Link to="/new" className="mx-auto">
-              <BsPlus className="add-button-style" size="40px" color="white" />
+              <BsPlus className="add-button-style" size="50px" color="white" />
             </Link>
           </div>
         </div>

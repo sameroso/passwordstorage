@@ -16,8 +16,12 @@ function LandingPage({ auth, match }) {
   } else if (auth) {
     return (
       <div>
-        <Navbar path={match.path} />
-        <DashBoard />
+        <div>
+          <Navbar path={match.path} />
+        </div>
+        <div>
+          <DashBoard />
+        </div>
       </div>
     );
   } else if (auth === false) {

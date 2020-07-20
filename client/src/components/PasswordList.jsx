@@ -62,7 +62,7 @@ function PasswordList({ passwordList }) {
   };
   return (
     <div className="container">
-      <div className="row search-bar-container mt-3">
+      <div className="row search-bar-container mt-0 mb-5">
         <input
           className="search-bar"
           value={searchInput}
@@ -72,7 +72,12 @@ function PasswordList({ passwordList }) {
           }}
           placeholder="Search for passwords, domains, titles or user names"
         />
-        <BsSearch className="my-auto text-white" />
+        <BsSearch
+          className="my-auto"
+          color="#269ead"
+          size="20px"
+          fontWeight="bold"
+        />
       </div>
       <div className="row">{renderList()}</div>
     </div>

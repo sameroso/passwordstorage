@@ -81,7 +81,7 @@ function AboutUs({ match }) {
                 />
               </div>
               <div className="col-12 col-sm-9">
-                <h5 className="text-white ml-5">Maria Clara Paggoto</h5>
+                <h5 className="text-white ml-5">Maria Clara Pagotto</h5>
                 <h5 className="text-white ml-5">Design and Frontend</h5>
                 <h5 className="text-white ml-5">Contact</h5>
                 <p className="text-white ml-5 ">clarapagotto@gmail.com</p>
