@@ -30,7 +30,7 @@ Essa aplicação pode ser acessada em: https://passwordstorage.herokuapp.com/
 * Cadastro e autenticação do usuário usando oauth
 * Design responsivo para mobile
 * senhas encriptadas no banco de dados
-* Mongoose como banco de dados 
+* MongoDb como banco de dados 
 
 A página funciona como uma single page application, em que recebe dados em formato json do backend e modela dinamicamente a página no frontend para que se tenha uma UI agradável ao usuário.
 
